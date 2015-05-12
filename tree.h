@@ -1,0 +1,156 @@
+typedef struct _NodeIndexList {
+	struct _NodeExp *exp;
+	struct _NodeIndexList *list;
+} NodeIndexList;
+
+typedef enum {
+	multiExp,
+	addExp,
+	minusExp,
+	divExp,
+	greaterExp,
+	lessExp,
+	GEExp,
+	LEExp,
+	notExp,
+	andExp,
+	orExp,
+	constant,
+	var,
+	chamada,
+	unMinusExp,
+	eqExp
+} ExpTag;
+
+typedef struct _NodeExp {
+	ExpTag tag;
+	union {
+		struct {
+			struct _NodeExp *l;
+			struct _NodeExp *r;
+		} binary_exp;
+		struct _NodeExp *unary_exp;
+		struct _NodeVar *var;
+		struct _NodeChamada *chamada;
+		struct _NodeConst *k;
+	} u;
+} NodeExp;
+
+typedef enum {
+	vint,
+	vchar,
+	vstring,
+	vfloat
+} ConstTag;
+
+typedef struct _NodeConst {
+	ConstTag tag;
+	union {
+		int i;
+		float f;
+		char c;
+		char *s;
+	} u;
+} NodeConst;
+
+
+typedef enum {
+	id,
+	idAndIndex	
+} VarTag;
+
+typedef struct _NodeVar {
+	VarTag tag;
+	union {
+		char *id;
+		struct {
+			char *id;
+			struct _NodeIndexList *index;
+		} index;
+	} u;
+} NodeVar;
+
+typedef enum {
+	cif,
+	cifelse,
+	cwhile,
+	cassign,
+	creturn,
+	cchamada,
+	cbloco
+} ComandoTag;
+
+typedef struct _NodeComando {
+	ComandoTag tag;
+	union {
+		struct {
+			struct _NodeExp *cond;
+			struct _NodeComando *command;
+		} cif;
+		struct {
+			struct _NodeExp *cond;
+			struct _NodeComando *ifCommand;
+			struct _NodeComando *elseCommand;
+		} cifelse;
+		struct {
+			struct _NodeExp *cond;
+			struct _NodeComando *command;
+		} cwhile;
+		struct {
+			struct _NodeVar *var;
+			struct _NodeExp *exp;
+		} cassign;
+		struct _NodeExp *returnExp;
+		struct _NodeChamada *chamada;
+		struct _NodeBloco *bloco;
+	} u;
+} NodeComando;
+
+// chamada	: ID OpeningParenthesis listaexp ClosingParenthesis
+
+typedef struct _NodeChamada {
+	char *id;
+	struct _NodeListaExp *parans;
+} NodeChamada;
+
+typedef struct _NodeListaExp {
+	struct _NodeExp *exp;
+	struct _NodeListaExp *list;
+} NodeListaExp;
+
+typedef enum {
+	dec,
+	command
+} BlocoTag;
+
+typedef struct _NodeBloco {
+	BlocoTag tag;
+	struct _NodeBloco *next;
+	union {
+		struct _NodeDecVar *dec;
+		struct _NodeComando *command;
+	} u;
+} NodeBloco;
+
+typedef struct _NodeDecVar {
+	struct _NodeTipo *tipo;
+	struct _NodeListaNomes *lista;
+} NodeDecVar;
+
+typedef struct _NodeListaNomes {
+	char *id;
+	struct _NodeListaNomes *next;
+} NodeListaNomes;
+
+typedef enum {
+	tint,
+	tchar,
+	tfloat,
+	tvoid,
+	tipoAndBrackets
+} TipoTag;
+
+typedef struct _NodeTipo {
+	TipoTag tag;
+	struct _NodeTipo *tipo;
+} NodeTipo;
