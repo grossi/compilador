@@ -3,6 +3,7 @@
 	#include <math.h>
 	#include <string.h>
 	#include "tree.h"
+	#include <stdlib.h>
 
 	char* ProcessString(char* s)
 	{

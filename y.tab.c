@@ -1572,7 +1572,7 @@ yyreduce:
 #line 120 "monga.y"
     {
 											(yyval.declista) = (NodeDecLista*) malloc(sizeof(NodeDecLista));
-											(yyval.declista)->tag = var;
+											(yyval.declista)->tag = decvar;
 											(yyval.declista)->u.var = (yyvsp[(1) - (1)].decVar);
 										}
     break;
@@ -1893,8 +1893,8 @@ yyreduce:
 #line 304 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
-						(yyval.var)->tag = id;
-						(yyval.var)->u.id = (yyvsp[(1) - (1)].s);
+						(yyval.var)->id = (yyvsp[(1) - (1)].s);
+						(yyval.var)->indexList = NULL;
 					}
     break;
 
@@ -1904,8 +1904,8 @@ yyreduce:
 #line 310 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
-						(yyval.var)->tag = idAndIndex;
-						(yyval.var)->u.index.id = (yyvsp[(1) - (2)].s);
+						(yyval.var)->id = (yyvsp[(1) - (2)].s);
+						(yyval.var)->indexList = (yyvsp[(2) - (2)].indexList);
 					}
     break;
 

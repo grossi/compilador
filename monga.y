@@ -119,7 +119,7 @@ listadeclaracao	: declaracao			{
 
 declaracao	: decvariavel				{
 											$$ = (NodeDecLista*) malloc(sizeof(NodeDecLista));
-											$$->tag = var;
+											$$->tag = decvar;
 											$$->u.var = $1;
 										}
 			| decfuncao					{
@@ -303,14 +303,14 @@ indexlista	: indexlista index  {
 
 var	: ID 			{
 						$$ = (NodeVar*)malloc(sizeof(NodeVar));
-						$$->tag = id;
-						$$->u.id = $1;
+						$$->id = $1;
+						$$->indexList = NULL;
 					}
 
 	| ID indexlista	{
 						$$ = (NodeVar*)malloc(sizeof(NodeVar));
-						$$->tag = idAndIndex;
-						$$->u.index.id = $1;
+						$$->id = $1;
+						$$->indexList = $2;
 					}
 	;
 

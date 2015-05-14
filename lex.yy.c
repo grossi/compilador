@@ -426,6 +426,7 @@ char *yytext;
 	#include <math.h>
 	#include <string.h>
 	#include "tree.h"
+	#include <stdlib.h>
 
 	char* ProcessString(char* s)
 	{
@@ -474,7 +475,7 @@ char *yytext;
 		return copy;
 	}
 
-#line 478 "lex.yy.c"
+#line 479 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -625,10 +626,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 59 "monga.l"
+#line 60 "monga.l"
 
 
-#line 632 "lex.yy.c"
+#line 633 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -713,199 +714,199 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 61 "monga.l"
+#line 62 "monga.l"
 return OpeningParenthesis;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 63 "monga.l"
+#line 64 "monga.l"
 return ClosingParenthesis;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 65 "monga.l"
+#line 66 "monga.l"
 return OpeningBracket;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 67 "monga.l"
+#line 68 "monga.l"
 return ClosingBracket;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 69 "monga.l"
+#line 70 "monga.l"
 return OpeningBrace;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 71 "monga.l"
+#line 72 "monga.l"
 return ClosingBrace;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 73 "monga.l"
+#line 74 "monga.l"
 return Comma;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 75 "monga.l"
+#line 76 "monga.l"
 return SemiColon;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 77 "monga.l"
+#line 78 "monga.l"
 return T_Int;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 79 "monga.l"
+#line 80 "monga.l"
 return T_Char;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 81 "monga.l"
+#line 82 "monga.l"
 return T_Float;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 83 "monga.l"
+#line 84 "monga.l"
 return T_Void;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 85 "monga.l"
+#line 86 "monga.l"
 return If;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 87 "monga.l"
+#line 88 "monga.l"
 return Else;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 89 "monga.l"
+#line 90 "monga.l"
 return While;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 91 "monga.l"
+#line 92 "monga.l"
 return Return;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 93 "monga.l"
+#line 94 "monga.l"
 return New;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 95 "monga.l"
+#line 96 "monga.l"
 return Op_Assign;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 97 "monga.l"
+#line 98 "monga.l"
 return Op_Minus;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 99 "monga.l"
+#line 100 "monga.l"
 return Op_Plus;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 101 "monga.l"
+#line 102 "monga.l"
 return Op_Multiplication;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 103 "monga.l"
+#line 104 "monga.l"
 return Op_Division;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 105 "monga.l"
+#line 106 "monga.l"
 return Op_Equal;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 107 "monga.l"
+#line 108 "monga.l"
 return Op_LessOrEqual;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 109 "monga.l"
+#line 110 "monga.l"
 return Op_GreaterOrEqual;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 111 "monga.l"
+#line 112 "monga.l"
 return Op_Less;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 113 "monga.l"
+#line 114 "monga.l"
 return Op_Greater;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 115 "monga.l"
+#line 116 "monga.l"
 return Op_Not;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 117 "monga.l"
+#line 118 "monga.l"
 return Op_And;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 119 "monga.l"
+#line 120 "monga.l"
 return Op_Or;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 121 "monga.l"
+#line 122 "monga.l"
 { yylval.i = strtol(yytext, NULL, 10); return V_Int; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 123 "monga.l"
+#line 124 "monga.l"
 { yylval.i = (int)strtol(yytext, NULL, 16); return V_Int; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 125 "monga.l"
+#line 126 "monga.l"
 { yylval.c = ProcessChar(yytext); return V_Char; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 127 "monga.l"
+#line 128 "monga.l"
 { yylval.f = strtof(yytext, NULL); return V_Float; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 129 "monga.l"
+#line 130 "monga.l"
 { yylval.s = ProcessString(yytext); return V_String; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 131 "monga.l"
+#line 132 "monga.l"
 { yylval.s = CopyString(yytext); return ID; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 133 "monga.l"
+#line 134 "monga.l"
 /* eat up whitespace */
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 137 "monga.l"
+#line 138 "monga.l"
 { printf("EOF\n"); return -1; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 139 "monga.l"
+#line 140 "monga.l"
 ECHO;
 	YY_BREAK
-#line 909 "lex.yy.c"
+#line 910 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1789,7 +1790,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 139 "monga.l"
+#line 140 "monga.l"
 
 
 int yywrap(void)

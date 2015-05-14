@@ -56,20 +56,9 @@ typedef struct _NodeConst {
 } NodeConst;
 
 
-typedef enum {
-	id,
-	idAndIndex	
-} VarTag;
-
 typedef struct _NodeVar {
-	VarTag tag;
-	union {
-		char *id;
-		struct {
-			char *id;
-			struct _NodeIndexList *index;
-		} index;
-	} u;
+	char *id;
+	struct _NodeIndexList *indexList;
 } NodeVar;
 
 typedef enum {
@@ -164,7 +153,7 @@ typedef struct _NodeParam {
 
 typedef enum {
 	func,
-	var
+	decvar
 } DecTag;
 
 typedef struct _NodeDecLista {
@@ -186,3 +175,26 @@ typedef struct _NodeDecFunc {
 typedef struct _NodeProgram {
 	struct _NodeDecLista *listaDec;
 } NodeProgram;
+
+typedef enum
+{
+	i,
+	c,
+	f,
+	s,
+	indexList,
+	var,
+	exp,
+	listExp,
+	chamada,
+	constant,
+	command,
+	bloco,
+	decVar,
+	listaNomes,
+	tipo,
+	param,
+	declista,
+	decfunc,
+	program
+} TreeNodeTag;
