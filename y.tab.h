@@ -140,12 +140,15 @@ typedef union YYSTYPE
 	struct _NodeDecVar *decVar;
 	struct _NodeListaNomes *listaNomes;
 	struct _NodeTipo *tipo;
-	struct _NodeParam* param;
+	struct _NodeParam *param;
+	struct _NodeDecLista *declista;
+	struct _NodeDecFunc *decfunc;
+	struct _NodeProgram *program;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 149 "y.tab.h"
+#line 152 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

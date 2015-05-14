@@ -1,6 +1,6 @@
 typedef struct _NodeIndexList {
 	struct _NodeExp *exp;
-	struct _NodeIndexList *list;
+	struct _NodeIndexList *next;
 } NodeIndexList;
 
 typedef enum {
@@ -16,7 +16,7 @@ typedef enum {
 	andExp,
 	orExp,
 	constant,
-	var,
+	varExp,
 	chamada,
 	unMinusExp,
 	eqExp
@@ -147,7 +147,6 @@ typedef enum {
 	tchar,
 	tfloat,
 	tvoid,
-	tipoAndBrackets
 } TipoTag;
 
 typedef struct _NodeTipo {
@@ -160,3 +159,28 @@ typedef struct _NodeParam {
 	struct _NodeParam* next;
 	struct _NodeTipo* tipo;
 } NodeParam;
+
+typedef enum {
+	func,
+	var
+} DecTag;
+
+typedef struct _NodeDecLista {
+	DecTag tag;
+	struct _NodeDecLista *next;
+	union {
+		struct _NodeDecVar *var;
+		struct _NodeDecFunc *func;
+	} u;
+} NodeDecLista;
+
+typedef struct _NodeDecFunc {
+	struct NodeTipo *tipo;
+	char* id;
+	struct _NodeParam *params;
+	struct _NodeBloco *bloco;
+} NodeDecFunc;
+
+typedef struct _NodeProgram {
+	struct _NodeDecLista *listaDec;
+} NodeProgram;

@@ -56,7 +56,10 @@
 	struct _NodeDecVar *decVar;
 	struct _NodeListaNomes *listaNomes;
 	struct _NodeTipo *tipo;
-	struct _NodeParam* param;
+	struct _NodeParam *param;
+	struct _NodeDecLista *declista;
+	struct _NodeDecFunc *decfunc;
+	struct _NodeProgram *program;
 }
 
 %right Op_Assign
@@ -72,8 +75,8 @@
 %nonassoc Else
 
 %type <exp> exp
-%type <exp> index
 %type <var> var
+%type <indexList> index
 %type <indexList> indexlista
 %type <listExp> listaexp
 %type <chamada> chamada
@@ -86,6 +89,10 @@
 %type <tipo> tipo
 %type <param> parametros
 %type <param> parametro
+%type <declista> declaracao
+%type <declista> listadeclaracao
+%type <decfunc> decfuncao
+%type <program> programa
 
 
 %start programa
@@ -95,12 +102,25 @@
 programa	: listadeclaracao	{ printf("SUCESS.\n"); exit(0); }
 			;
 
-listadeclaracao	: declaracao
-				| listadeclaracao declaracao
+listadeclaracao	: declaracao			{
+											$$ = $1;
+										}
+				| listadeclaracao declaracao	{
+													$$ = $1;
+													$$->next = $2;
+												}
 				;
 
-declaracao	: decvariavel
-			| decfuncao
+declaracao	: decvariavel				{
+											$$ = (NodeDecLista*) malloc(sizeof(NodeDecLista));
+											$$->tag = var;
+											$$->u.var = $1;
+										}
+			| decfuncao					{
+											$$ = (NodeDecLista*) malloc(sizeof(NodeDecLista));
+											$$->tag = func;
+											$$->u.func = $1;
+										}
 			;
 
 decvariavel	: tipo listanomes SemiColon	{
@@ -149,6 +169,13 @@ tipo	: T_Int									{
      	;
 
 decfuncao	: tipo ID OpeningParenthesis parametros ClosingParenthesis bloco
+												{
+													$$ = (NodeDecFunc*)malloc(sizeof(NodeDecFunc));
+													$$->tipo = $1;
+													$$->id = $2;
+													$$->params = $4;
+													$$->bloco = $6;
+												}
 			;
 
 parametros	: parametro  						{
@@ -251,19 +278,20 @@ comando	: If OpeningParenthesis exp ClosingParenthesis comando Else comando
 
 		;
 
-index	: OpeningBracket exp ClosingBracket; 
+index	: OpeningBracket exp ClosingBracket	 	{
+													$$ = (NodeIndexList*) malloc(sizeof(NodeIndexList));
+													$$->exp = $2;
+												}
+		; 
 
 
 indexlista	: indexlista index  { 
-									$$ = (NodeIndexList*) malloc(sizeof(NodeIndexList));
-									$$->list = $1;
-									$$->exp = $2;
+									$$ = $1;
+									$$->next = $2;
  								}
 			| index 			{ 
-									$$ = (NodeIndexList*) malloc(sizeof(NodeIndexList));
-									$$->exp = $1;
-									$$->list = NULL;
- 								}
+									$$ = $1;
+								}
 
 			;
 
@@ -329,7 +357,7 @@ exp	: constant									{
 												}
 	| var 										{
 													$$ = (NodeExp*)malloc(sizeof(NodeExp));
-													$$->tag = var;
+													$$->tag = varExp;
 													$$->u.var = $1;
 												}
 	| OpeningParenthesis exp ClosingParenthesis {
