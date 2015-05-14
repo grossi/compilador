@@ -1,3 +1,5 @@
+struct _NodeProgram* semTree;
+
 typedef struct _NodeIndexList {
 	struct _NodeExp *exp;
 	struct _NodeIndexList *next;

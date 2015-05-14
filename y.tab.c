@@ -71,11 +71,12 @@
 #line 1 "monga.y"
 
 	#include "tree.h"
+	extern NodeProgram* semTree;
 	#include <stdlib.h>
 
 
 /* Line 189 of yacc.c  */
-#line 79 "y.tab.c"
+#line 80 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -186,7 +187,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 43 "monga.y"
+#line 44 "monga.y"
 
 	int i;
 	char c;
@@ -211,7 +212,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 215 "y.tab.c"
+#line 216 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -223,7 +224,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 227 "y.tab.c"
+#line 228 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -532,12 +533,12 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   102,   102,   105,   108,   114,   119,   126,   133,   138,
-     145,   150,   155,   160,   165,   171,   181,   185,   191,   198,
-     203,   209,   216,   223,   232,   240,   247,   254,   261,   267,
-     273,   281,   288,   292,   298,   304,   311,   316,   321,   326,
-     333,   341,   346,   353,   358,   363,   366,   371,   376,   382,
-     388,   394,   400,   406,   412,   418,   424,   430,   435,   441
+       0,   103,   103,   111,   114,   120,   125,   132,   139,   144,
+     151,   156,   161,   166,   171,   177,   187,   191,   197,   204,
+     209,   215,   222,   229,   238,   246,   253,   260,   267,   273,
+     279,   287,   294,   298,   304,   310,   317,   322,   327,   332,
+     339,   347,   352,   359,   364,   369,   372,   377,   382,   388,
+     394,   400,   406,   412,   418,   424,   430,   436,   441,   447
 };
 #endif
 
@@ -1537,14 +1538,19 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 102 "monga.y"
-    { printf("SUCESS.\n"); exit(0); }
+#line 103 "monga.y"
+    { 
+									printf("LOL.\n"); exit(0); 
+									(yyval.program) = (NodeProgram*) malloc(sizeof(NodeProgram));
+									(yyval.program)->listaDec = (yyvsp[(1) - (1)].declista);
+									semTree = (yyval.program);
+								}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 105 "monga.y"
+#line 111 "monga.y"
     {
 											(yyval.declista) = (yyvsp[(1) - (1)].declista);
 										}
@@ -1553,7 +1559,7 @@ yyreduce:
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 108 "monga.y"
+#line 114 "monga.y"
     {
 													(yyval.declista) = (yyvsp[(1) - (2)].declista);
 													(yyval.declista)->next = (yyvsp[(2) - (2)].declista);
@@ -1563,7 +1569,7 @@ yyreduce:
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 114 "monga.y"
+#line 120 "monga.y"
     {
 											(yyval.declista) = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											(yyval.declista)->tag = var;
@@ -1574,7 +1580,7 @@ yyreduce:
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 119 "monga.y"
+#line 125 "monga.y"
     {
 											(yyval.declista) = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											(yyval.declista)->tag = func;
@@ -1585,7 +1591,7 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 126 "monga.y"
+#line 132 "monga.y"
     {
 											(yyval.decVar) = (NodeDecVar*) malloc(sizeof(NodeDecVar));
 											(yyval.decVar)->tipo = (yyvsp[(1) - (3)].tipo);
@@ -1596,7 +1602,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 133 "monga.y"
+#line 139 "monga.y"
     { 
 										(yyval.listaNomes) = (NodeListaNomes*) malloc(sizeof(NodeListaNomes));
 										(yyval.listaNomes)->next = NULL;
@@ -1607,7 +1613,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 138 "monga.y"
+#line 144 "monga.y"
     { 
 										(yyval.listaNomes) = (NodeListaNomes*) malloc(sizeof(NodeListaNomes));
 										(yyval.listaNomes)->next = (yyvsp[(1) - (3)].listaNomes);
@@ -1618,7 +1624,7 @@ yyreduce:
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 145 "monga.y"
+#line 151 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tint;
@@ -1629,7 +1635,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 150 "monga.y"
+#line 156 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tint;
@@ -1640,7 +1646,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 155 "monga.y"
+#line 161 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tint;
@@ -1651,7 +1657,7 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 160 "monga.y"
+#line 166 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tint;
@@ -1662,7 +1668,7 @@ yyreduce:
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 165 "monga.y"
+#line 171 "monga.y"
     {
 													(yyval.tipo) = (yyvsp[(1) - (3)].tipo);
 													(yyval.tipo)->dimensions++;
@@ -1672,7 +1678,7 @@ yyreduce:
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 172 "monga.y"
+#line 178 "monga.y"
     {
 													(yyval.decfunc) = (NodeDecFunc*)malloc(sizeof(NodeDecFunc));
 													(yyval.decfunc)->tipo = (yyvsp[(1) - (6)].tipo);
@@ -1685,7 +1691,7 @@ yyreduce:
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 181 "monga.y"
+#line 187 "monga.y"
     {
 													(yyval.param) = (yyvsp[(1) - (1)].param);
 													(yyval.param)->next = NULL;
@@ -1695,7 +1701,7 @@ yyreduce:
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 185 "monga.y"
+#line 191 "monga.y"
     {
 													(yyval.param) = (yyvsp[(1) - (3)].param);
 													(yyval.param)->next = (yyvsp[(3) - (3)].param);
@@ -1705,7 +1711,7 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 191 "monga.y"
+#line 197 "monga.y"
     {
 													(yyval.param) = (NodeParam*) malloc(sizeof(NodeParam));
 													(yyval.param)->tipo = (yyvsp[(1) - (2)].tipo);
@@ -1716,7 +1722,7 @@ yyreduce:
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 198 "monga.y"
+#line 204 "monga.y"
     {
 													(yyval.bloco) = (yyvsp[(2) - (3)].bloco);
 												}
@@ -1725,7 +1731,7 @@ yyreduce:
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 203 "monga.y"
+#line 209 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = dec;
@@ -1737,7 +1743,7 @@ yyreduce:
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 209 "monga.y"
+#line 215 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = command;
@@ -1749,7 +1755,7 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 217 "monga.y"
+#line 223 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = dec;
@@ -1761,7 +1767,7 @@ yyreduce:
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 224 "monga.y"
+#line 230 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = command;
@@ -1773,7 +1779,7 @@ yyreduce:
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 233 "monga.y"
+#line 239 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cifelse;
@@ -1786,7 +1792,7 @@ yyreduce:
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 241 "monga.y"
+#line 247 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cif;
@@ -1798,7 +1804,7 @@ yyreduce:
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 248 "monga.y"
+#line 254 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cwhile;
@@ -1810,7 +1816,7 @@ yyreduce:
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 255 "monga.y"
+#line 261 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cassign;
@@ -1822,7 +1828,7 @@ yyreduce:
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 262 "monga.y"
+#line 268 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = creturn;
@@ -1833,7 +1839,7 @@ yyreduce:
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 268 "monga.y"
+#line 274 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cchamada;
@@ -1844,7 +1850,7 @@ yyreduce:
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 273 "monga.y"
+#line 279 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cbloco;
@@ -1855,7 +1861,7 @@ yyreduce:
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 281 "monga.y"
+#line 287 "monga.y"
     {
 													(yyval.indexList) = (NodeIndexList*) malloc(sizeof(NodeIndexList));
 													(yyval.indexList)->exp = (yyvsp[(2) - (3)].exp);
@@ -1865,7 +1871,7 @@ yyreduce:
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 288 "monga.y"
+#line 294 "monga.y"
     { 
 									(yyval.indexList) = (yyvsp[(1) - (2)].indexList);
 									(yyval.indexList)->next = (yyvsp[(2) - (2)].indexList);
@@ -1875,7 +1881,7 @@ yyreduce:
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 292 "monga.y"
+#line 298 "monga.y"
     { 
 									(yyval.indexList) = (yyvsp[(1) - (1)].indexList);
 								}
@@ -1884,7 +1890,7 @@ yyreduce:
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 298 "monga.y"
+#line 304 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
 						(yyval.var)->tag = id;
@@ -1895,7 +1901,7 @@ yyreduce:
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 304 "monga.y"
+#line 310 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
 						(yyval.var)->tag = idAndIndex;
@@ -1906,7 +1912,7 @@ yyreduce:
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 311 "monga.y"
+#line 317 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vint;
@@ -1917,7 +1923,7 @@ yyreduce:
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 316 "monga.y"
+#line 322 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vstring;
@@ -1928,7 +1934,7 @@ yyreduce:
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 321 "monga.y"
+#line 327 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vfloat;
@@ -1939,7 +1945,7 @@ yyreduce:
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 326 "monga.y"
+#line 332 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vchar;
@@ -1950,7 +1956,7 @@ yyreduce:
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 334 "monga.y"
+#line 340 "monga.y"
     {
 													(yyval.chamada) = (NodeChamada*)malloc(sizeof(NodeChamada));
 													(yyval.chamada)->id = (yyvsp[(1) - (4)].s);
@@ -1961,7 +1967,7 @@ yyreduce:
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 341 "monga.y"
+#line 347 "monga.y"
     {
 													(yyval.listExp) = (NodeListaExp*)malloc(sizeof(NodeListaExp));
 													(yyval.listExp)->list = (yyvsp[(1) - (3)].listExp);
@@ -1972,7 +1978,7 @@ yyreduce:
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 346 "monga.y"
+#line 352 "monga.y"
     {
 													(yyval.listExp) = (NodeListaExp*)malloc(sizeof(NodeListaExp));
 													(yyval.listExp)->exp = (yyvsp[(1) - (1)].exp);
@@ -1983,7 +1989,7 @@ yyreduce:
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 353 "monga.y"
+#line 359 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = constant;
@@ -1994,7 +2000,7 @@ yyreduce:
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 358 "monga.y"
+#line 364 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = varExp;
@@ -2005,7 +2011,7 @@ yyreduce:
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 363 "monga.y"
+#line 369 "monga.y"
     {
 													(yyval.exp) = (yyvsp[(2) - (3)].exp); 
 												}
@@ -2014,7 +2020,7 @@ yyreduce:
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 366 "monga.y"
+#line 372 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = chamada;
@@ -2025,7 +2031,7 @@ yyreduce:
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 371 "monga.y"
+#line 377 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = unMinusExp;
@@ -2036,7 +2042,7 @@ yyreduce:
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 376 "monga.y"
+#line 382 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = addExp;
@@ -2048,7 +2054,7 @@ yyreduce:
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 382 "monga.y"
+#line 388 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = minusExp;
@@ -2060,7 +2066,7 @@ yyreduce:
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 388 "monga.y"
+#line 394 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = multiExp;
@@ -2072,7 +2078,7 @@ yyreduce:
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 394 "monga.y"
+#line 400 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = divExp;
@@ -2084,7 +2090,7 @@ yyreduce:
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 400 "monga.y"
+#line 406 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = eqExp;
@@ -2096,7 +2102,7 @@ yyreduce:
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 406 "monga.y"
+#line 412 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = greaterExp;
@@ -2108,7 +2114,7 @@ yyreduce:
   case 54:
 
 /* Line 1455 of yacc.c  */
-#line 412 "monga.y"
+#line 418 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = lessExp;
@@ -2120,7 +2126,7 @@ yyreduce:
   case 55:
 
 /* Line 1455 of yacc.c  */
-#line 418 "monga.y"
+#line 424 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = GEExp;
@@ -2132,7 +2138,7 @@ yyreduce:
   case 56:
 
 /* Line 1455 of yacc.c  */
-#line 424 "monga.y"
+#line 430 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = LEExp;
@@ -2144,7 +2150,7 @@ yyreduce:
   case 57:
 
 /* Line 1455 of yacc.c  */
-#line 430 "monga.y"
+#line 436 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = notExp;
@@ -2155,7 +2161,7 @@ yyreduce:
   case 58:
 
 /* Line 1455 of yacc.c  */
-#line 435 "monga.y"
+#line 441 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = andExp;
@@ -2167,7 +2173,7 @@ yyreduce:
   case 59:
 
 /* Line 1455 of yacc.c  */
-#line 441 "monga.y"
+#line 447 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = orExp;
@@ -2179,7 +2185,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 2183 "y.tab.c"
+#line 2189 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2391,11 +2397,5 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 449 "monga.y"
+#line 455 "monga.y"
 
-
-int main()
-{
-	yyparse();
-	return 0;
-}

@@ -1,5 +1,6 @@
 %{
 	#include "tree.h"
+	extern NodeProgram* semTree;
 	#include <stdlib.h>
 %}
 
@@ -99,7 +100,12 @@
 
 %%
 
-programa	: listadeclaracao	{ printf("SUCESS.\n"); exit(0); }
+programa	: listadeclaracao	{ 
+									printf("LOL.\n"); exit(0); 
+									$$ = (NodeProgram*) malloc(sizeof(NodeProgram));
+									$$->listaDec = $1;
+									semTree = $$;
+								}
 			;
 
 listadeclaracao	: declaracao			{
@@ -447,9 +453,3 @@ exp	: constant									{
 	;
 
 %%
-
-int main()
-{
-	yyparse();
-	return 0;
-}
