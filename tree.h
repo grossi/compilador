@@ -152,5 +152,11 @@ typedef enum {
 
 typedef struct _NodeTipo {
 	TipoTag tag;
-	struct _NodeTipo *tipo;
+	int dimensions;
 } NodeTipo;
+
+typedef struct _NodeParam {
+	char *id;
+	struct _NodeParam* next;
+	struct _NodeTipo* tipo;
+} NodeParam;

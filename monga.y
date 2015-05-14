@@ -56,6 +56,7 @@
 	struct _NodeDecVar *decVar;
 	struct _NodeListaNomes *listaNomes;
 	struct _NodeTipo *tipo;
+	struct _NodeParam* param;
 }
 
 %right Op_Assign
@@ -83,6 +84,8 @@
 %type <decVar> decvariavel
 %type <listaNomes> listanomes
 %type <tipo> tipo
+%type <param> parametros
+%type <param> parametro
 
 
 %start programa
@@ -120,22 +123,49 @@ listanomes	: ID					{
 			;
 
 tipo	: T_Int									{
-													
+													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
+													$$->tag = tint;
+													$$->dimensions = 0;
 												}
-		| T_Char								
-    	| T_Float								
-     	| T_Void								
-		| tipo OpeningBracket ClosingBracket	
+		| T_Char								{
+													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
+													$$->tag = tint;
+													$$->dimensions = 0;
+												}
+    	| T_Float								{
+													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
+													$$->tag = tint;
+													$$->dimensions = 0;
+												}
+     	| T_Void								{
+													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
+													$$->tag = tint;
+													$$->dimensions = 0;
+												}
+		| tipo OpeningBracket ClosingBracket	{
+													$$ = $1;
+													$$->dimensions++;
+												}
      	;
 
 decfuncao	: tipo ID OpeningParenthesis parametros ClosingParenthesis bloco
 			;
 
-parametros	: parametro  
-			| parametro Comma parametro
+parametros	: parametro  						{
+													$$ = $1;
+													$$->next = NULL;
+												}
+			| parametro Comma parametro 		{
+													$$ = $1;
+													$$->next = $3;
+												}
 			;
 
-parametro	: tipo ID
+parametro	: tipo ID 							{
+													$$ = (NodeParam*) malloc(sizeof(NodeParam));
+													$$->tipo = $1;
+													$$->id = $2;
+												}
 			;
 
 bloco	: OpeningBrace listabloco ClosingBrace  {
