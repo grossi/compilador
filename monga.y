@@ -1,7 +1,8 @@
 %{
 	#include "tree.h"
 	extern NodeProgram* semTree;
-	#include <stdlib.h>
+	#include <stdio.h>
+	#include <malloc.h>
 %}
 
 %token	OpeningParenthesis
@@ -83,8 +84,7 @@
 %type <chamada> chamada
 %type <constant> constant
 %type <command> comando
-%type <bloco> bloco
-%type <bloco> listabloco
+%type <bloco> bloco%type <bloco> listabloco
 %type <decVar> decvariavel
 %type <listaNomes> listanomes
 %type <tipo> tipo
@@ -101,10 +101,10 @@
 %%
 
 programa	: listadeclaracao	{ 
-									printf("LOL.\n"); exit(0); 
 									$$ = (NodeProgram*) malloc(sizeof(NodeProgram));
 									$$->listaDec = $1;
 									semTree = $$;
+									printf("End of program.\n");
 								}
 			;
 
@@ -113,7 +113,8 @@ listadeclaracao	: declaracao			{
 										}
 				| listadeclaracao declaracao	{
 													$$ = $1;
-													$$->next = $2;
+													$$->last->next = $2;
+													$$->last = $2;
 												}
 				;
 
@@ -121,11 +122,15 @@ declaracao	: decvariavel				{
 											$$ = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											$$->tag = decvar;
 											$$->u.var = $1;
+											$$->next = NULL;
+											$$->last = $$;
 										}
 			| decfuncao					{
 											$$ = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											$$->tag = func;
 											$$->u.func = $1;
+											$$->next = NULL;
+											$$->last = $$;
 										}
 			;
 
@@ -155,17 +160,17 @@ tipo	: T_Int									{
 												}
 		| T_Char								{
 													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tint;
+													$$->tag = tchar;
 													$$->dimensions = 0;
 												}
     	| T_Float								{
 													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tint;
+													$$->tag = tfloat;
 													$$->dimensions = 0;
 												}
      	| T_Void								{
 													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tint;
+													$$->tag = tvoid;
 													$$->dimensions = 0;
 												}
 		| tipo OpeningBracket ClosingBracket	{
@@ -186,18 +191,20 @@ decfuncao	: tipo ID OpeningParenthesis parametros ClosingParenthesis bloco
 
 parametros	: parametro  						{
 													$$ = $1;
-													$$->next = NULL;
 												}
-			| parametro Comma parametro 		{
+			| parametros Comma parametro 		{
 													$$ = $1;
-													$$->next = $3;
+													$$->last->next = $3;
+													$$->last = $3;
 												}
-			;
+			|									{ $$ = NULL; }
 
 parametro	: tipo ID 							{
 													$$ = (NodeParam*) malloc(sizeof(NodeParam));
 													$$->tipo = $1;
 													$$->id = $2;
+													$$->next = NULL;
+													$$->last = $$;
 												}
 			;
 
@@ -211,28 +218,30 @@ listabloco	: decvariavel 		{
 									$$->tag = dec;
 									$$->u.dec = $1;
 									$$->next = NULL;
- 								}
+									$$->last = $$;
+								}
 			| comando 			{ 
 									$$ = (NodeBloco*) malloc(sizeof(NodeBloco));
-									$$->tag = command;
+									$$->tag = com;
 									$$->u.command = $1;
 									$$->next = NULL;
- 								}
+									$$->last = $$;
+								}
 
 			| listabloco decvariavel
 								{ 
-									$$ = (NodeBloco*) malloc(sizeof(NodeBloco));
-									$$->tag = dec;
-									$$->u.dec = $2;
-									$$->next = $1;
+									$$ = $1;
+									$$->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
+									$$->last->next->tag = dec;
+									$$->last->next->u.dec = $2;
  								}
 			| listabloco comando
-								{ 
-									$$ = (NodeBloco*) malloc(sizeof(NodeBloco));
-									$$->tag = command;
-									$$->u.command = $2;
-									$$->next = $1;
- 								}
+								{
+									$$ = $1;
+									$$->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
+									$$->last->next->tag = com;
+									$$->last->next->u.command = $2; 
+								}
 			;
 
 comando	: If OpeningParenthesis exp ClosingParenthesis comando Else comando
@@ -358,7 +367,7 @@ listaexp	: listaexp Comma exp 				{
 
 exp	: constant									{
 													$$ = (NodeExp*)malloc(sizeof(NodeExp));
-													$$->tag = constant;
+													$$->tag = constantExp;
 													$$->u.k = $1;
 												}
 	| var 										{
@@ -371,7 +380,7 @@ exp	: constant									{
 												}
 	| chamada  									{
 													$$ = (NodeExp*)malloc(sizeof(NodeExp));
-													$$->tag = chamada;
+													$$->tag = chamadaExp;
 													$$->u.chamada = $1;
 												}
 	| Op_Minus exp 								{

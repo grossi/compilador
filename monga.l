@@ -57,7 +57,13 @@
 DIGIT	[0-9]
 LETTER	[a-z]|[A-Z]
 
+%x C_COMMENT
+
 %%
+
+"/*"            { BEGIN(C_COMMENT); }
+<C_COMMENT>"*/" { BEGIN(INITIAL); }
+<C_COMMENT>.    { }
 
 \(	return OpeningParenthesis;
 
@@ -133,15 +139,14 @@ new	return New;
 
 [ \t\n]+	/* eat up whitespace */
 
-
-
-<<EOF>>	{ printf("EOF\n"); return -1; }
+.	{ return yytext[0];	}
 
 %%
 
 int yywrap(void)
 {
-   return 0;
+   
+   return 1;
 }
 
 int yyerror(void)

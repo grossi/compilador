@@ -1,3 +1,5 @@
+#include "y.tab.h"
+
 struct _NodeProgram* semTree;
 
 typedef struct _NodeIndexList {
@@ -17,9 +19,9 @@ typedef enum {
 	notExp,
 	andExp,
 	orExp,
-	constant,
+	constantExp,
 	varExp,
-	chamada,
+	chamadaExp,
 	unMinusExp,
 	eqExp
 } ExpTag;
@@ -110,13 +112,13 @@ typedef struct _NodeListaExp {
 } NodeListaExp;
 
 typedef enum {
+	com,
 	dec,
-	command
 } BlocoTag;
 
 typedef struct _NodeBloco {
 	BlocoTag tag;
-	struct _NodeBloco *next;
+	struct _NodeBloco *next, *last;
 	union {
 		struct _NodeDecVar *dec;
 		struct _NodeComando *command;
@@ -147,8 +149,8 @@ typedef struct _NodeTipo {
 
 typedef struct _NodeParam {
 	char *id;
-	struct _NodeParam* next;
-	struct _NodeTipo* tipo;
+	struct _NodeParam *next, *last;
+	struct _NodeTipo *tipo;
 } NodeParam;
 
 typedef enum {
@@ -159,6 +161,7 @@ typedef enum {
 typedef struct _NodeDecLista {
 	DecTag tag;
 	struct _NodeDecLista *next;
+	struct _NodeDecLista *last;
 	union {
 		struct _NodeDecVar *var;
 		struct _NodeDecFunc *func;
@@ -166,7 +169,7 @@ typedef struct _NodeDecLista {
 } NodeDecLista;
 
 typedef struct _NodeDecFunc {
-	struct NodeTipo *tipo;
+	struct _NodeTipo *tipo;
 	char* id;
 	struct _NodeParam *params;
 	struct _NodeBloco *bloco;
@@ -184,7 +187,7 @@ typedef enum
 	s,
 	indexList,
 	var,
-	exp,
+	Exp,
 	listExp,
 	chamada,
 	constant,
