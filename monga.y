@@ -104,7 +104,6 @@ programa	: listadeclaracao	{
 									$$ = (NodeProgram*) malloc(sizeof(NodeProgram));
 									$$->listaDec = $1;
 									semTree = $$;
-									printf("End of program.\n");
 								}
 			;
 
@@ -290,7 +289,6 @@ comando	: If OpeningParenthesis exp ClosingParenthesis comando Else comando
 									$$->tag = cbloco;
 									$$->u.bloco = $1;
  								}
-
 		;
 
 index	: OpeningBracket exp ClosingBracket	 	{
@@ -458,6 +456,13 @@ exp	: constant									{
 													$$->tag = orExp;
 													$$->u.binary_exp.l = $1;
 													$$->u.binary_exp.r = $3;
+												}
+	| New tipo OpeningBracket exp ClosingBracket
+												{ 
+													$$ = (NodeExp*) malloc(sizeof(NodeExp));
+													$$->tag = newExp;
+													$$->u.newExp.tipo = $2;
+													$$->u.newExp.exp = $4;
 												}
 	;
 

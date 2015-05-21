@@ -129,6 +129,13 @@ void printTree( YYSTYPE node, TreeNodeTag tag, int k ) {
 					nextNode.exp = node.exp->u.binary_exp.r;
 					printTree( nextNode, Exp, k+1 );
 					return;
+				case newExp:
+					printf("newExp\n");
+					nextNode.tipo = node.exp->u.newExp.tipo;
+					printTree( nextNode, tipo, k+1 );
+					nextNode.exp = node.exp->u.newExp.exp;
+					printTree( nextNode, Exp, k+1 );
+					return;
 			}
 		}
 		case listExp:

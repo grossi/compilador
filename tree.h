@@ -23,7 +23,8 @@ typedef enum {
 	varExp,
 	chamadaExp,
 	unMinusExp,
-	eqExp
+	eqExp,
+	newExp
 } ExpTag;
 
 typedef struct _NodeExp {
@@ -33,6 +34,10 @@ typedef struct _NodeExp {
 			struct _NodeExp *l;
 			struct _NodeExp *r;
 		} binary_exp;
+		struct {
+			struct _NodeTipo *tipo;
+			struct _NodeExp *exp;
+		} newExp;
 		struct _NodeExp *unary_exp;
 		struct _NodeVar *var;
 		struct _NodeChamada *chamada;

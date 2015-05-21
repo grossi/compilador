@@ -1,0 +1,18 @@
+program
+ declista
+  Declaracao Func id: foo
+   tipo: int
+   Bloco Command
+    Command return
+     notExp
+      addExp
+       varExp
+        var: v
+       divExp
+        multiExp
+         constantExp
+          constant: int 2
+         constantExp
+          constant: int 3
+        constantExp
+         constant: int 4

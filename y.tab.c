@@ -1,9 +1,10 @@
-/* A Bison parser, made by GNU Bison 2.4.2.  */
+
+/* A Bison parser, made by GNU Bison 2.4.1.  */
 
 /* Skeleton implementation for Bison's Yacc-like parsers in C
    
-      Copyright (C) 1984, 1989-1990, 2000-2006, 2009-2010 Free Software
-   Foundation, Inc.
+      Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -45,7 +46,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.4.2"
+#define YYBISON_VERSION "2.4.1"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -76,7 +77,7 @@
 
 
 /* Line 189 of yacc.c  */
-#line 80 "y.tab.c"
+#line 81 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -212,7 +213,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 216 "y.tab.c"
+#line 217 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -224,7 +225,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 228 "y.tab.c"
+#line 229 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -274,7 +275,7 @@ typedef short int yytype_int16;
 #define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
 
 #ifndef YY_
-# if defined YYENABLE_NLS && YYENABLE_NLS
+# if YYENABLE_NLS
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
 #   define YY_(msgid) dgettext ("bison-runtime", msgid)
@@ -439,16 +440,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   251
+#define YYLAST   284
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  39
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  20
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  60
+#define YYNRULES  61
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  109
+#define YYNSTATES  114
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -503,7 +504,7 @@ static const yytype_uint8 yyprhs[] =
       96,    99,   101,   105,   108,   110,   112,   115,   117,   119,
      121,   123,   128,   132,   134,   136,   138,   142,   144,   147,
      151,   155,   159,   163,   167,   171,   175,   179,   183,   186,
-     190
+     190,   194
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -528,19 +529,19 @@ static const yytype_int8 yyrhs[] =
       24,    58,    -1,    58,    25,    58,    -1,    58,    29,    58,
       -1,    58,    28,    58,    -1,    58,    27,    58,    -1,    58,
       26,    58,    -1,    30,    58,    -1,    58,    31,    58,    -1,
-      58,    32,    58,    -1
+      58,    32,    58,    -1,    19,    45,     5,    58,     6,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   103,   103,   111,   114,   121,   128,   137,   144,   149,
-     156,   161,   166,   171,   176,   182,   192,   195,   200,   202,
-     211,   216,   223,   231,   238,   247,   255,   262,   269,   276,
-     282,   288,   296,   303,   307,   313,   319,   326,   331,   336,
-     341,   348,   356,   361,   368,   373,   378,   381,   386,   391,
-     397,   403,   409,   415,   421,   427,   433,   439,   445,   450,
-     456
+       0,   103,   103,   110,   113,   120,   127,   136,   143,   148,
+     155,   160,   165,   170,   175,   181,   191,   194,   199,   201,
+     210,   215,   222,   230,   237,   246,   254,   261,   268,   275,
+     281,   287,   294,   301,   305,   311,   317,   324,   329,   334,
+     339,   346,   354,   359,   366,   371,   376,   379,   384,   389,
+     395,   401,   407,   413,   419,   425,   431,   437,   443,   448,
+     454,   460
 };
 #endif
 
@@ -584,7 +585,7 @@ static const yytype_uint8 yyr1[] =
       51,    51,    52,    53,    53,    54,    54,    55,    55,    55,
       55,    56,    57,    57,    58,    58,    58,    58,    58,    58,
       58,    58,    58,    58,    58,    58,    58,    58,    58,    58,
-      58
+      58,    58
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -596,7 +597,7 @@ static const yytype_uint8 yyr2[] =
        2,     1,     3,     2,     1,     1,     2,     1,     1,     1,
        1,     4,     3,     1,     1,     1,     3,     1,     2,     3,
        3,     3,     3,     3,     3,     3,     3,     3,     2,     3,
-       3
+       3,     5
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -608,45 +609,47 @@ static const yytype_uint8 yydefact[] =
        6,     1,     4,     0,     8,     0,    14,    18,     0,     7,
        0,     0,    16,     9,    19,     0,     0,     0,    15,    17,
        0,     0,     0,    35,    21,     0,    31,     0,    22,     0,
-       0,     0,     0,     0,     0,     0,    37,    40,    39,    38,
-      45,    44,    47,     0,     0,     0,    34,    36,     8,    20,
-      23,    24,     0,    30,     0,     0,     0,    48,    58,    29,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,    43,     0,    33,     0,     0,     0,    46,    50,
-      49,    51,    52,    53,    57,    56,    55,    54,    59,    60,
-      41,     0,    32,    28,    26,    27,    42,     0,    25
+       0,     0,     0,     0,     0,     0,     0,    37,    40,    39,
+      38,    45,    44,    47,     0,     0,     0,    34,    36,     8,
+      20,    23,    24,     0,    30,     0,     0,     0,     0,    48,
+      58,    29,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,    43,     0,    33,     0,     0,     0,
+      46,     0,    50,    49,    51,    52,    53,    57,    56,    55,
+      54,    59,    60,    41,     0,    32,    28,    26,    27,     0,
+      42,     0,    61,    25
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
       -1,     5,     6,     7,     8,    15,     9,    10,    21,    22,
-      36,    37,    38,    56,    57,    50,    51,    52,    81,    53
+      36,    37,    38,    57,    58,    51,    52,    53,    83,    54
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -39
+#define YYPACT_NINF -38
 static const yytype_int16 yypact[] =
 {
-      62,   -39,   -39,   -39,   -39,    15,    62,   -39,   -39,     6,
-     -39,   -39,   -39,     2,    20,    21,   -39,    62,   -16,   -39,
-       8,    16,   -39,   -39,   -39,    37,    62,    91,   -39,   -39,
-      46,    49,    51,    50,   -39,     9,   -39,    82,   -39,    38,
-      56,    51,    51,    51,    51,    51,   -39,   -39,   -39,   -39,
-     -39,   -39,   -39,   167,    51,    51,   -39,    63,   -39,   -39,
-     -39,   -39,    51,   -39,   108,   120,   134,    41,   -39,   -39,
-      51,    51,    51,    51,    51,    51,    51,    51,    51,    51,
-      51,    18,   199,   147,   -39,   187,    11,    11,   -39,    41,
-      41,   -39,   -39,    94,   159,   159,   159,   159,   222,   211,
-     -39,    51,   -39,   -39,    53,   -39,   199,    11,   -39
+      66,   -38,   -38,   -38,   -38,     7,    66,   -38,   -38,     9,
+     -38,   -38,   -38,     5,    14,    46,   -38,    66,   -16,   -38,
+      10,    18,   -38,   -38,   -38,    16,    66,   110,   -38,   -38,
+      22,    30,    70,    29,   -38,    11,   -38,   101,   -38,    31,
+      50,    70,    70,    70,    66,    70,    70,   -38,   -38,   -38,
+     -38,   -38,   -38,   -38,   200,    70,    70,   -38,    52,   -38,
+     -38,   -38,   -38,    70,   -38,   127,   139,   153,    61,    47,
+     -38,   -38,    70,    70,    70,    70,    70,    70,    70,    70,
+      70,    70,    70,    20,   232,   166,   -38,   220,    13,    13,
+     -38,    62,    47,    47,   -38,   -38,   113,   192,   192,   192,
+     192,   255,   244,   -38,    70,   -38,   -38,    56,   -38,   180,
+     232,    13,   -38,   -38
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -39,   -39,   -39,    64,   -18,   -39,    30,   -39,   -39,    52,
-      54,   -39,   -36,    26,   -39,   -27,   -39,   -25,   -39,   -38
+     -38,   -38,   -38,    68,   -24,   -38,    32,   -38,   -38,    59,
+      57,   -38,   -36,    35,   -38,   -27,   -38,   -25,   -38,   -37
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -656,62 +659,68 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-      39,    61,    40,    64,    65,    66,    67,    68,    16,    34,
-      39,    13,    40,    13,    13,    11,    82,    83,    27,    60,
-      25,    23,   100,    17,    85,    26,    30,   101,    31,    32,
-      18,    19,    89,    90,    91,    92,    93,    94,    95,    96,
-      97,    98,    99,    14,    27,    24,    58,    20,    33,    41,
-     104,   105,    42,    54,    43,    55,    20,    35,    62,    39,
-      39,    40,    40,   106,    72,    73,    63,    35,    55,   107,
-      12,   108,    44,     1,     2,     3,     4,     0,    29,    28,
-      39,    45,    40,    84,    46,    47,    48,    49,    33,    27,
-      59,     0,     0,     1,     2,     3,     4,    30,    27,    31,
-      32,     0,     1,     2,     3,     4,    30,     0,    31,    32,
-       0,     0,    86,     0,     0,    70,    71,    72,    73,    33,
-      75,    76,    77,    78,    87,     0,     0,     0,    33,    70,
-      71,    72,    73,    74,    75,    76,    77,    78,    88,    79,
-      80,    70,    71,    72,    73,    74,    75,    76,    77,    78,
-       0,    79,    80,   102,     0,    70,    71,    72,    73,    74,
-      75,    76,    77,    78,     0,    79,    80,     0,    70,    71,
-      72,    73,    74,    75,    76,    77,    78,    69,    79,    80,
-      70,    71,    72,    73,     0,     0,     0,     0,    70,    71,
-      72,    73,    74,    75,    76,    77,    78,   103,    79,    80,
-       0,     0,     0,     0,     0,     0,     0,     0,    70,    71,
-      72,    73,    74,    75,    76,    77,    78,     0,    79,    80,
-      70,    71,    72,    73,    74,    75,    76,    77,    78,     0,
-      79,    80,    70,    71,    72,    73,    74,    75,    76,    77,
-      78,     0,    79,    70,    71,    72,    73,    74,    75,    76,
-      77,    78
+      39,    62,    40,    34,    65,    66,    67,    11,    69,    70,
+      39,    16,    40,    61,    13,    13,    13,    17,    84,    85,
+      27,    23,    25,    27,   103,    41,    87,    26,    30,   104,
+      31,    32,    55,    42,    56,    92,    93,    94,    95,    96,
+      97,    98,    99,   100,   101,   102,    14,    24,    59,    20,
+      33,    63,   107,   108,   109,    18,    19,    56,    20,    35,
+      64,    39,    39,    40,    40,    43,    91,   110,    16,    35,
+      74,    75,   111,    43,    12,   113,    68,     1,     2,     3,
+       4,    44,    28,    45,    39,    29,    40,     0,     0,    44,
+       0,    45,    46,    86,     0,    47,    48,    49,    50,    33,
+      46,     0,     0,    47,    48,    49,    50,    33,    27,    60,
+       0,     0,     1,     2,     3,     4,    30,    27,    31,    32,
+       0,     1,     2,     3,     4,    30,     0,    31,    32,     0,
+       0,    88,     0,     0,    72,    73,    74,    75,    33,    77,
+      78,    79,    80,    89,     0,     0,     0,    33,    72,    73,
+      74,    75,    76,    77,    78,    79,    80,    90,    81,    82,
+      72,    73,    74,    75,    76,    77,    78,    79,    80,     0,
+      81,    82,   105,     0,    72,    73,    74,    75,    76,    77,
+      78,    79,    80,     0,    81,    82,   112,    72,    73,    74,
+      75,    76,    77,    78,    79,    80,     0,    81,    82,     0,
+       0,    72,    73,    74,    75,    76,    77,    78,    79,    80,
+      71,    81,    82,    72,    73,    74,    75,     0,     0,     0,
+       0,    72,    73,    74,    75,    76,    77,    78,    79,    80,
+     106,    81,    82,     0,     0,     0,     0,     0,     0,     0,
+       0,    72,    73,    74,    75,    76,    77,    78,    79,    80,
+       0,    81,    82,    72,    73,    74,    75,    76,    77,    78,
+      79,    80,     0,    81,    82,    72,    73,    74,    75,    76,
+      77,    78,    79,    80,     0,    81,    72,    73,    74,    75,
+      76,    77,    78,    79,    80
 };
 
 static const yytype_int8 yycheck[] =
 {
-      27,    37,    27,    41,    42,    43,    44,    45,     6,    27,
-      37,     5,    37,     5,     5,     0,    54,    55,     7,    37,
-       4,    37,     4,     3,    62,     9,    15,     9,    17,    18,
-       9,    10,    70,    71,    72,    73,    74,    75,    76,    77,
-      78,    79,    80,    37,     7,    37,    37,    17,    37,     3,
-      86,    87,     3,     3,     3,     5,    26,    27,    20,    86,
-      87,    86,    87,   101,    23,    24,    10,    37,     5,    16,
-       6,   107,    21,    11,    12,    13,    14,    -1,    26,    25,
-     107,    30,   107,    57,    33,    34,    35,    36,    37,     7,
-       8,    -1,    -1,    11,    12,    13,    14,    15,     7,    17,
-      18,    -1,    11,    12,    13,    14,    15,    -1,    17,    18,
-      -1,    -1,     4,    -1,    -1,    21,    22,    23,    24,    37,
-      26,    27,    28,    29,     4,    -1,    -1,    -1,    37,    21,
-      22,    23,    24,    25,    26,    27,    28,    29,     4,    31,
-      32,    21,    22,    23,    24,    25,    26,    27,    28,    29,
-      -1,    31,    32,     6,    -1,    21,    22,    23,    24,    25,
-      26,    27,    28,    29,    -1,    31,    32,    -1,    21,    22,
-      23,    24,    25,    26,    27,    28,    29,    10,    31,    32,
-      21,    22,    23,    24,    -1,    -1,    -1,    -1,    21,    22,
-      23,    24,    25,    26,    27,    28,    29,    10,    31,    32,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    21,    22,
-      23,    24,    25,    26,    27,    28,    29,    -1,    31,    32,
+      27,    37,    27,    27,    41,    42,    43,     0,    45,    46,
+      37,     6,    37,    37,     5,     5,     5,     3,    55,    56,
+       7,    37,     4,     7,     4,     3,    63,     9,    15,     9,
+      17,    18,     3,     3,     5,    72,    73,    74,    75,    76,
+      77,    78,    79,    80,    81,    82,    37,    37,    37,    17,
+      37,    20,    88,    89,    91,     9,    10,     5,    26,    27,
+      10,    88,    89,    88,    89,     3,     5,   104,     6,    37,
+      23,    24,    16,     3,     6,   111,    44,    11,    12,    13,
+      14,    19,    25,    21,   111,    26,   111,    -1,    -1,    19,
+      -1,    21,    30,    58,    -1,    33,    34,    35,    36,    37,
+      30,    -1,    -1,    33,    34,    35,    36,    37,     7,     8,
+      -1,    -1,    11,    12,    13,    14,    15,     7,    17,    18,
+      -1,    11,    12,    13,    14,    15,    -1,    17,    18,    -1,
+      -1,     4,    -1,    -1,    21,    22,    23,    24,    37,    26,
+      27,    28,    29,     4,    -1,    -1,    -1,    37,    21,    22,
+      23,    24,    25,    26,    27,    28,    29,     4,    31,    32,
       21,    22,    23,    24,    25,    26,    27,    28,    29,    -1,
-      31,    32,    21,    22,    23,    24,    25,    26,    27,    28,
-      29,    -1,    31,    21,    22,    23,    24,    25,    26,    27,
-      28,    29
+      31,    32,     6,    -1,    21,    22,    23,    24,    25,    26,
+      27,    28,    29,    -1,    31,    32,     6,    21,    22,    23,
+      24,    25,    26,    27,    28,    29,    -1,    31,    32,    -1,
+      -1,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      10,    31,    32,    21,    22,    23,    24,    -1,    -1,    -1,
+      -1,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      10,    31,    32,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      -1,    31,    32,    21,    22,    23,    24,    25,    26,    27,
+      28,    29,    -1,    31,    32,    21,    22,    23,    24,    25,
+      26,    27,    28,    29,    -1,    31,    21,    22,    23,    24,
+      25,    26,    27,    28,    29
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -722,13 +731,14 @@ static const yytype_uint8 yystos[] =
       46,     0,    42,     5,    37,    44,     6,     3,     9,    10,
       45,    47,    48,    37,    37,     4,     9,     7,    49,    48,
       15,    17,    18,    37,    43,    45,    49,    50,    51,    54,
-      56,     3,     3,     3,    21,    30,    33,    34,    35,    36,
-      54,    55,    56,    58,     3,     5,    52,    53,    37,     8,
-      43,    51,    20,    10,    58,    58,    58,    58,    58,    10,
-      21,    22,    23,    24,    25,    26,    27,    28,    29,    31,
-      32,    57,    58,    58,    52,    58,     4,     4,     4,    58,
-      58,    58,    58,    58,    58,    58,    58,    58,    58,    58,
-       4,     9,     6,    10,    51,    51,    58,    16,    51
+      56,     3,     3,     3,    19,    21,    30,    33,    34,    35,
+      36,    54,    55,    56,    58,     3,     5,    52,    53,    37,
+       8,    43,    51,    20,    10,    58,    58,    58,    45,    58,
+      58,    10,    21,    22,    23,    24,    25,    26,    27,    28,
+      29,    31,    32,    57,    58,    58,    52,    58,     4,     4,
+       4,     5,    58,    58,    58,    58,    58,    58,    58,    58,
+      58,    58,    58,     4,     9,     6,    10,    51,    51,    58,
+      58,    16,     6,    51
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -743,18 +753,9 @@ static const yytype_uint8 yystos[] =
 
 /* Like YYERROR except do call yyerror.  This remains here temporarily
    to ease the transition to the new meaning of YYERROR, for GCC.
-   Once GCC version 2 has supplanted version 1, this can go.  However,
-   YYFAIL appears to be in use.  Nevertheless, it is formally deprecated
-   in Bison 2.4.2's NEWS entry, where a plan to phase it out is
-   discussed.  */
+   Once GCC version 2 has supplanted version 1, this can go.  */
 
 #define YYFAIL		goto yyerrlab
-#if defined YYFAIL
-  /* This is here to suppress warnings from the GCC cpp's
-     -Wunused-macros.  Normally we don't worry about that warning, but
-     some users do, and we want to make it easy for users to remove
-     YYFAIL uses, which will produce warnings from Bison 2.5.  */
-#endif
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
@@ -811,7 +812,7 @@ while (YYID (0))
    we won't break user code: when these are the locations we know.  */
 
 #ifndef YY_LOCATION_PRINT
-# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+# if YYLTYPE_IS_TRIVIAL
 #  define YY_LOCATION_PRINT(File, Loc)			\
      fprintf (File, "%d.%d-%d.%d",			\
 	      (Loc).first_line, (Loc).first_column,	\
@@ -1550,20 +1551,19 @@ yyreduce:
     {
         case 2:
 
-/* Line 1464 of yacc.c  */
+/* Line 1455 of yacc.c  */
 #line 103 "monga.y"
     { 
 									(yyval.program) = (NodeProgram*) malloc(sizeof(NodeProgram));
 									(yyval.program)->listaDec = (yyvsp[(1) - (1)].declista);
 									semTree = (yyval.program);
-									printf("End of program.\n");
 								}
     break;
 
   case 3:
 
-/* Line 1464 of yacc.c  */
-#line 111 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 110 "monga.y"
     {
 											(yyval.declista) = (yyvsp[(1) - (1)].declista);
 										}
@@ -1571,8 +1571,8 @@ yyreduce:
 
   case 4:
 
-/* Line 1464 of yacc.c  */
-#line 114 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 113 "monga.y"
     {
 													(yyval.declista) = (yyvsp[(1) - (2)].declista);
 													(yyval.declista)->last->next = (yyvsp[(2) - (2)].declista);
@@ -1582,8 +1582,8 @@ yyreduce:
 
   case 5:
 
-/* Line 1464 of yacc.c  */
-#line 121 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 120 "monga.y"
     {
 											(yyval.declista) = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											(yyval.declista)->tag = decvar;
@@ -1595,8 +1595,8 @@ yyreduce:
 
   case 6:
 
-/* Line 1464 of yacc.c  */
-#line 128 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 127 "monga.y"
     {
 											(yyval.declista) = (NodeDecLista*) malloc(sizeof(NodeDecLista));
 											(yyval.declista)->tag = func;
@@ -1608,8 +1608,8 @@ yyreduce:
 
   case 7:
 
-/* Line 1464 of yacc.c  */
-#line 137 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 136 "monga.y"
     {
 											(yyval.decVar) = (NodeDecVar*) malloc(sizeof(NodeDecVar));
 											(yyval.decVar)->tipo = (yyvsp[(1) - (3)].tipo);
@@ -1619,8 +1619,8 @@ yyreduce:
 
   case 8:
 
-/* Line 1464 of yacc.c  */
-#line 144 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 143 "monga.y"
     { 
 										(yyval.listaNomes) = (NodeListaNomes*) malloc(sizeof(NodeListaNomes));
 										(yyval.listaNomes)->next = NULL;
@@ -1630,8 +1630,8 @@ yyreduce:
 
   case 9:
 
-/* Line 1464 of yacc.c  */
-#line 149 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 148 "monga.y"
     { 
 										(yyval.listaNomes) = (NodeListaNomes*) malloc(sizeof(NodeListaNomes));
 										(yyval.listaNomes)->next = (yyvsp[(1) - (3)].listaNomes);
@@ -1641,8 +1641,8 @@ yyreduce:
 
   case 10:
 
-/* Line 1464 of yacc.c  */
-#line 156 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 155 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tint;
@@ -1652,8 +1652,8 @@ yyreduce:
 
   case 11:
 
-/* Line 1464 of yacc.c  */
-#line 161 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 160 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tchar;
@@ -1663,8 +1663,8 @@ yyreduce:
 
   case 12:
 
-/* Line 1464 of yacc.c  */
-#line 166 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 165 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tfloat;
@@ -1674,8 +1674,8 @@ yyreduce:
 
   case 13:
 
-/* Line 1464 of yacc.c  */
-#line 171 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 170 "monga.y"
     {
 													(yyval.tipo) = (NodeTipo*) malloc(sizeof(NodeTipo));
 													(yyval.tipo)->tag = tvoid;
@@ -1685,8 +1685,8 @@ yyreduce:
 
   case 14:
 
-/* Line 1464 of yacc.c  */
-#line 176 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 175 "monga.y"
     {
 													(yyval.tipo) = (yyvsp[(1) - (3)].tipo);
 													(yyval.tipo)->dimensions++;
@@ -1695,8 +1695,8 @@ yyreduce:
 
   case 15:
 
-/* Line 1464 of yacc.c  */
-#line 183 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 182 "monga.y"
     {
 													(yyval.decfunc) = (NodeDecFunc*)malloc(sizeof(NodeDecFunc));
 													(yyval.decfunc)->tipo = (yyvsp[(1) - (6)].tipo);
@@ -1708,8 +1708,8 @@ yyreduce:
 
   case 16:
 
-/* Line 1464 of yacc.c  */
-#line 192 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 191 "monga.y"
     {
 													(yyval.param) = (yyvsp[(1) - (1)].param);
 												}
@@ -1717,8 +1717,8 @@ yyreduce:
 
   case 17:
 
-/* Line 1464 of yacc.c  */
-#line 195 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 194 "monga.y"
     {
 													(yyval.param) = (yyvsp[(1) - (3)].param);
 													(yyval.param)->last->next = (yyvsp[(3) - (3)].param);
@@ -1728,15 +1728,15 @@ yyreduce:
 
   case 18:
 
-/* Line 1464 of yacc.c  */
-#line 200 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 199 "monga.y"
     { (yyval.param) = NULL; }
     break;
 
   case 19:
 
-/* Line 1464 of yacc.c  */
-#line 202 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 201 "monga.y"
     {
 													(yyval.param) = (NodeParam*) malloc(sizeof(NodeParam));
 													(yyval.param)->tipo = (yyvsp[(1) - (2)].tipo);
@@ -1748,8 +1748,8 @@ yyreduce:
 
   case 20:
 
-/* Line 1464 of yacc.c  */
-#line 211 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 210 "monga.y"
     {
 													(yyval.bloco) = (yyvsp[(2) - (3)].bloco);
 												}
@@ -1757,8 +1757,8 @@ yyreduce:
 
   case 21:
 
-/* Line 1464 of yacc.c  */
-#line 216 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 215 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = dec;
@@ -1770,8 +1770,8 @@ yyreduce:
 
   case 22:
 
-/* Line 1464 of yacc.c  */
-#line 223 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 222 "monga.y"
     { 
 									(yyval.bloco) = (NodeBloco*) malloc(sizeof(NodeBloco));
 									(yyval.bloco)->tag = com;
@@ -1783,8 +1783,8 @@ yyreduce:
 
   case 23:
 
-/* Line 1464 of yacc.c  */
-#line 232 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 231 "monga.y"
     { 
 									(yyval.bloco) = (yyvsp[(1) - (2)].bloco);
 									(yyval.bloco)->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
@@ -1795,8 +1795,8 @@ yyreduce:
 
   case 24:
 
-/* Line 1464 of yacc.c  */
-#line 239 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 238 "monga.y"
     {
 									(yyval.bloco) = (yyvsp[(1) - (2)].bloco);
 									(yyval.bloco)->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
@@ -1807,8 +1807,8 @@ yyreduce:
 
   case 25:
 
-/* Line 1464 of yacc.c  */
-#line 248 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 247 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cifelse;
@@ -1820,8 +1820,8 @@ yyreduce:
 
   case 26:
 
-/* Line 1464 of yacc.c  */
-#line 256 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 255 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cif;
@@ -1832,8 +1832,8 @@ yyreduce:
 
   case 27:
 
-/* Line 1464 of yacc.c  */
-#line 263 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 262 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cwhile;
@@ -1844,8 +1844,8 @@ yyreduce:
 
   case 28:
 
-/* Line 1464 of yacc.c  */
-#line 270 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 269 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cassign;
@@ -1856,8 +1856,8 @@ yyreduce:
 
   case 29:
 
-/* Line 1464 of yacc.c  */
-#line 277 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 276 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = creturn;
@@ -1867,8 +1867,8 @@ yyreduce:
 
   case 30:
 
-/* Line 1464 of yacc.c  */
-#line 283 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 282 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cchamada;
@@ -1878,8 +1878,8 @@ yyreduce:
 
   case 31:
 
-/* Line 1464 of yacc.c  */
-#line 288 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 287 "monga.y"
     { 
 									(yyval.command) = (NodeComando*) malloc(sizeof(NodeComando));
 									(yyval.command)->tag = cbloco;
@@ -1889,8 +1889,8 @@ yyreduce:
 
   case 32:
 
-/* Line 1464 of yacc.c  */
-#line 296 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 294 "monga.y"
     {
 													(yyval.indexList) = (NodeIndexList*) malloc(sizeof(NodeIndexList));
 													(yyval.indexList)->exp = (yyvsp[(2) - (3)].exp);
@@ -1899,8 +1899,8 @@ yyreduce:
 
   case 33:
 
-/* Line 1464 of yacc.c  */
-#line 303 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 301 "monga.y"
     { 
 									(yyval.indexList) = (yyvsp[(1) - (2)].indexList);
 									(yyval.indexList)->next = (yyvsp[(2) - (2)].indexList);
@@ -1909,8 +1909,8 @@ yyreduce:
 
   case 34:
 
-/* Line 1464 of yacc.c  */
-#line 307 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 305 "monga.y"
     { 
 									(yyval.indexList) = (yyvsp[(1) - (1)].indexList);
 								}
@@ -1918,8 +1918,8 @@ yyreduce:
 
   case 35:
 
-/* Line 1464 of yacc.c  */
-#line 313 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 311 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
 						(yyval.var)->id = (yyvsp[(1) - (1)].s);
@@ -1929,8 +1929,8 @@ yyreduce:
 
   case 36:
 
-/* Line 1464 of yacc.c  */
-#line 319 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 317 "monga.y"
     {
 						(yyval.var) = (NodeVar*)malloc(sizeof(NodeVar));
 						(yyval.var)->id = (yyvsp[(1) - (2)].s);
@@ -1940,8 +1940,8 @@ yyreduce:
 
   case 37:
 
-/* Line 1464 of yacc.c  */
-#line 326 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 324 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vint;
@@ -1951,8 +1951,8 @@ yyreduce:
 
   case 38:
 
-/* Line 1464 of yacc.c  */
-#line 331 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 329 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vstring;
@@ -1962,8 +1962,8 @@ yyreduce:
 
   case 39:
 
-/* Line 1464 of yacc.c  */
-#line 336 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 334 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vfloat;
@@ -1973,8 +1973,8 @@ yyreduce:
 
   case 40:
 
-/* Line 1464 of yacc.c  */
-#line 341 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 339 "monga.y"
     {
 							(yyval.constant) = (NodeConst*)malloc(sizeof(NodeConst));
 							(yyval.constant)->tag = vchar;
@@ -1984,8 +1984,8 @@ yyreduce:
 
   case 41:
 
-/* Line 1464 of yacc.c  */
-#line 349 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 347 "monga.y"
     {
 													(yyval.chamada) = (NodeChamada*)malloc(sizeof(NodeChamada));
 													(yyval.chamada)->id = (yyvsp[(1) - (4)].s);
@@ -1995,8 +1995,8 @@ yyreduce:
 
   case 42:
 
-/* Line 1464 of yacc.c  */
-#line 356 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 354 "monga.y"
     {
 													(yyval.listExp) = (NodeListaExp*)malloc(sizeof(NodeListaExp));
 													(yyval.listExp)->list = (yyvsp[(1) - (3)].listExp);
@@ -2006,8 +2006,8 @@ yyreduce:
 
   case 43:
 
-/* Line 1464 of yacc.c  */
-#line 361 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 359 "monga.y"
     {
 													(yyval.listExp) = (NodeListaExp*)malloc(sizeof(NodeListaExp));
 													(yyval.listExp)->exp = (yyvsp[(1) - (1)].exp);
@@ -2017,8 +2017,8 @@ yyreduce:
 
   case 44:
 
-/* Line 1464 of yacc.c  */
-#line 368 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 366 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = constantExp;
@@ -2028,8 +2028,8 @@ yyreduce:
 
   case 45:
 
-/* Line 1464 of yacc.c  */
-#line 373 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 371 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = varExp;
@@ -2039,8 +2039,8 @@ yyreduce:
 
   case 46:
 
-/* Line 1464 of yacc.c  */
-#line 378 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 376 "monga.y"
     {
 													(yyval.exp) = (yyvsp[(2) - (3)].exp); 
 												}
@@ -2048,8 +2048,8 @@ yyreduce:
 
   case 47:
 
-/* Line 1464 of yacc.c  */
-#line 381 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 379 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = chamadaExp;
@@ -2059,8 +2059,8 @@ yyreduce:
 
   case 48:
 
-/* Line 1464 of yacc.c  */
-#line 386 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 384 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = unMinusExp;
@@ -2070,8 +2070,8 @@ yyreduce:
 
   case 49:
 
-/* Line 1464 of yacc.c  */
-#line 391 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 389 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = addExp;
@@ -2082,8 +2082,8 @@ yyreduce:
 
   case 50:
 
-/* Line 1464 of yacc.c  */
-#line 397 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 395 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = minusExp;
@@ -2094,8 +2094,8 @@ yyreduce:
 
   case 51:
 
-/* Line 1464 of yacc.c  */
-#line 403 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 401 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = multiExp;
@@ -2106,8 +2106,8 @@ yyreduce:
 
   case 52:
 
-/* Line 1464 of yacc.c  */
-#line 409 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 407 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = divExp;
@@ -2118,8 +2118,8 @@ yyreduce:
 
   case 53:
 
-/* Line 1464 of yacc.c  */
-#line 415 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 413 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = eqExp;
@@ -2130,8 +2130,8 @@ yyreduce:
 
   case 54:
 
-/* Line 1464 of yacc.c  */
-#line 421 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 419 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = greaterExp;
@@ -2142,8 +2142,8 @@ yyreduce:
 
   case 55:
 
-/* Line 1464 of yacc.c  */
-#line 427 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 425 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = lessExp;
@@ -2154,8 +2154,8 @@ yyreduce:
 
   case 56:
 
-/* Line 1464 of yacc.c  */
-#line 433 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 431 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = GEExp;
@@ -2166,8 +2166,8 @@ yyreduce:
 
   case 57:
 
-/* Line 1464 of yacc.c  */
-#line 439 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 437 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = LEExp;
@@ -2178,8 +2178,8 @@ yyreduce:
 
   case 58:
 
-/* Line 1464 of yacc.c  */
-#line 445 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 443 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = notExp;
@@ -2189,8 +2189,8 @@ yyreduce:
 
   case 59:
 
-/* Line 1464 of yacc.c  */
-#line 450 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 448 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = andExp;
@@ -2201,8 +2201,8 @@ yyreduce:
 
   case 60:
 
-/* Line 1464 of yacc.c  */
-#line 456 "monga.y"
+/* Line 1455 of yacc.c  */
+#line 454 "monga.y"
     {
 													(yyval.exp) = (NodeExp*)malloc(sizeof(NodeExp));
 													(yyval.exp)->tag = orExp;
@@ -2211,10 +2211,22 @@ yyreduce:
 												}
     break;
 
+  case 61:
+
+/* Line 1455 of yacc.c  */
+#line 461 "monga.y"
+    { 
+													(yyval.exp) = (NodeExp*) malloc(sizeof(NodeExp));
+													(yyval.exp)->tag = newExp;
+													(yyval.exp)->u.newExp.tipo = (yyvsp[(2) - (5)].tipo);
+													(yyval.exp)->u.newExp.exp = (yyvsp[(4) - (5)].exp);
+												}
+    break;
 
 
-/* Line 1464 of yacc.c  */
-#line 2218 "y.tab.c"
+
+/* Line 1455 of yacc.c  */
+#line 2230 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2425,7 +2437,7 @@ yyreturn:
 
 
 
-/* Line 1684 of yacc.c  */
-#line 464 "monga.y"
+/* Line 1675 of yacc.c  */
+#line 469 "monga.y"
 
 
