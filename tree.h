@@ -183,26 +183,3 @@ typedef struct _NodeDecFunc {
 typedef struct _NodeProgram {
 	struct _NodeDecLista *listaDec;
 } NodeProgram;
-
-typedef enum
-{
-	i,
-	c,
-	f,
-	s,
-	indexList,
-	var,
-	Exp,
-	listExp,
-	chamada,
-	constant,
-	command,
-	bloco,
-	decVar,
-	listaNomes,
-	tipo,
-	param,
-	declista,
-	decfunc,
-	program
-} TreeNodeTag;
