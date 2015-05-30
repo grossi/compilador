@@ -3,6 +3,10 @@
 	extern NodeProgram* semTree;
 	#include <stdio.h>
 	#include <malloc.h>
+	extern struct _NodeTipo tipoInt;
+	extern struct _NodeTipo tipoChar;
+	extern struct _NodeTipo tipoFloat;
+	extern struct _NodeTipo tipoVoid;
 %}
 
 %token	OpeningParenthesis
@@ -134,9 +138,18 @@ declaracao	: decvariavel				{
 			;
 
 decvariavel	: tipo listanomes SemiColon	{
+											NodeListaNomes *iterador;
+											NodeDecVar *iterador2;
 											$$ = (NodeDecVar*) malloc(sizeof(NodeDecVar));
-											$$->tipo = $1;
-											$$->lista = $2;
+											for( iterador = $2, iterador2 = $$; iterador != NULL; iterador = iterador->next )  {
+												iterador2->tipo = $1;
+												iterador2->id = iterador->id;
+												if( iterador->next != NULL ) {
+													iterador2->next = (NodeDecVar*) malloc(sizeof(NodeDecVar));
+													iterador2 = iterador2->next;
+												} else
+													iterador2->next = NULL;
+											}
 										}
 			;
 
@@ -153,27 +166,24 @@ listanomes	: ID					{
 			;
 
 tipo	: T_Int									{
-													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tint;
-													$$->dimensions = 0;
+													$$ = &tipoInt;
 												}
 		| T_Char								{
-													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tchar;
-													$$->dimensions = 0;
+													$$ = &tipoChar;
 												}
     	| T_Float								{
-													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tfloat;
-													$$->dimensions = 0;
+													$$ = &tipoFloat;
 												}
      	| T_Void								{
-													$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
-													$$->tag = tvoid;
-													$$->dimensions = 0;
+													$$ = &tipoVoid;
 												}
 		| tipo OpeningBracket ClosingBracket	{
-													$$ = $1;
+													if( $1->dimensions == 0 ) {
+														$$ = (NodeTipo*) malloc(sizeof(NodeTipo));
+														$$->tag = $1->tag;
+														$$->dimensions = 0;
+													} else
+														$$ = $1;
 													$$->dimensions++;
 												}
      	;
@@ -233,6 +243,8 @@ listabloco	: decvariavel 		{
 									$$->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
 									$$->last->next->tag = dec;
 									$$->last->next->u.dec = $2;
+									$$->last->next->next = NULL;
+									$$->last = $$->last->next;
  								}
 			| listabloco comando
 								{
@@ -240,6 +252,8 @@ listabloco	: decvariavel 		{
 									$$->last->next = (NodeBloco*) malloc(sizeof(NodeBloco));
 									$$->last->next->tag = com;
 									$$->last->next->u.command = $2; 
+									$$->last->next->next = NULL;
+									$$->last = $$->last->next;
 								}
 			;
 
@@ -294,15 +308,20 @@ comando	: If OpeningParenthesis exp ClosingParenthesis comando Else comando
 index	: OpeningBracket exp ClosingBracket	 	{
 													$$ = (NodeIndexList*) malloc(sizeof(NodeIndexList));
 													$$->exp = $2;
+													$$->next = NULL;
+													$$->last = $$;
+													$$->cont = 1;
 												}
 		; 
 
 
 indexlista	: indexlista index  { 
 									$$ = $1;
-									$$->next = $2;
+									$$->last->next = $2;
+									$$->last = $2;
+									$$->cont++;
  								}
-			| index 			{ 
+			| index 			{
 									$$ = $1;
 								}
 
@@ -352,15 +371,19 @@ chamada	: ID OpeningParenthesis listaexp ClosingParenthesis
 		;
 
 listaexp	: listaexp Comma exp 				{
-													$$ = (NodeListaExp*)malloc(sizeof(NodeListaExp));
-													$$->list = $1;
-													$$->exp = $3;
+													$$ = $1;
+													$$->last->next = (NodeListaExp*)malloc(sizeof(NodeListaExp));
+													$$->last->next->exp = $3;
+													$$->last->next->next = NULL;
+													$$->last = $$->last->next;
 												}	
 			| exp 								{
 													$$ = (NodeListaExp*)malloc(sizeof(NodeListaExp));
 													$$->exp = $1;
-													$$->list = NULL;
+													$$->next = NULL;
+													$$->last = $$;
 												}
+			| 									{	$$ = NULL;	}
 			;
 
 exp	: constant									{
@@ -457,12 +480,12 @@ exp	: constant									{
 													$$->u.binary_exp.l = $1;
 													$$->u.binary_exp.r = $3;
 												}
-	| New tipo OpeningBracket exp ClosingBracket
+	| New tipo indexlista
 												{ 
 													$$ = (NodeExp*) malloc(sizeof(NodeExp));
 													$$->tag = newExp;
 													$$->u.newExp.tipo = $2;
-													$$->u.newExp.exp = $4;
+													$$->u.newExp.index = $3;
 												}
 	;
 

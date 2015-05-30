@@ -149,8 +149,8 @@ int yywrap(void)
    return 1;
 }
 
-int yyerror(void)
+int yyerror(char *errmsg)
 {
-    printf("Error\n");
+    printf("Error : %s\n", errmsg);
     exit(1);
 }

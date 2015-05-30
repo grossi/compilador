@@ -1,5 +1,13 @@
 program
  declista
-  Declaracao Var
+  Declaracao Var ID : f 
    tipo: int
-   Lista de Nomes a
+   Declaracao Var ID : d 
+    tipo: int
+    Declaracao Var ID : b 
+     tipo: int
+     Declaracao Var ID : a 
+      tipo: int
+  declista
+   Declaracao Var ID : c 
+    tipo: int

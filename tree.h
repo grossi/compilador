@@ -1,10 +1,14 @@
+#ifndef TREE_H
+#define TREE_H
+
 #include "y.tab.h"
 
 struct _NodeProgram* semTree;
 
 typedef struct _NodeIndexList {
+	int cont;
 	struct _NodeExp *exp;
-	struct _NodeIndexList *next;
+	struct _NodeIndexList *next, *last;
 } NodeIndexList;
 
 typedef enum {
@@ -24,7 +28,8 @@ typedef enum {
 	chamadaExp,
 	unMinusExp,
 	eqExp,
-	newExp
+	newExp,
+	castExp,
 } ExpTag;
 
 typedef struct _NodeExp {
@@ -36,13 +41,18 @@ typedef struct _NodeExp {
 		} binary_exp;
 		struct {
 			struct _NodeTipo *tipo;
-			struct _NodeExp *exp;
+			struct _NodeIndexList *index;
 		} newExp;
+		struct {
+			struct _NodeExp *exp;
+			struct _NodeTipo *tipo;
+		} castExp;
 		struct _NodeExp *unary_exp;
 		struct _NodeVar *var;
 		struct _NodeChamada *chamada;
 		struct _NodeConst *k;
 	} u;
+	struct _NodeTipo *tipo;
 } NodeExp;
 
 typedef enum {
@@ -60,12 +70,14 @@ typedef struct _NodeConst {
 		char c;
 		char *s;
 	} u;
+	struct _NodeTipo *tipo;
 } NodeConst;
 
 
 typedef struct _NodeVar {
 	char *id;
 	struct _NodeIndexList *indexList;
+	struct _NodeDecVar *decVar;
 } NodeVar;
 
 typedef enum {
@@ -109,11 +121,12 @@ typedef struct _NodeComando {
 typedef struct _NodeChamada {
 	char *id;
 	struct _NodeListaExp *parans;
+	struct _NodeDecFunc *decFunc;
 } NodeChamada;
 
 typedef struct _NodeListaExp {
 	struct _NodeExp *exp;
-	struct _NodeListaExp *list;
+	struct _NodeListaExp *next, *last;
 } NodeListaExp;
 
 typedef enum {
@@ -132,7 +145,8 @@ typedef struct _NodeBloco {
 
 typedef struct _NodeDecVar {
 	struct _NodeTipo *tipo;
-	struct _NodeListaNomes *lista;
+	struct _NodeDecVar *next;
+	char *id;
 } NodeDecVar;
 
 typedef struct _NodeListaNomes {
@@ -156,6 +170,7 @@ typedef struct _NodeParam {
 	char *id;
 	struct _NodeParam *next, *last;
 	struct _NodeTipo *tipo;
+	struct _NodeDecVar *decVar;
 } NodeParam;
 
 typedef enum {
@@ -183,3 +198,5 @@ typedef struct _NodeDecFunc {
 typedef struct _NodeProgram {
 	struct _NodeDecLista *listaDec;
 } NodeProgram;
+
+#endif // TREE_H

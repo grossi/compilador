@@ -1,2 +1,4 @@
 /* asd */
-int /* asd */a/* asd */;
+int /* asd */a/* asd */, b, d, f;
+
+int c;

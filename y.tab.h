@@ -123,7 +123,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 45 "monga.y"
+#line 49 "monga.y"
 
 	int i;
 	char c;
