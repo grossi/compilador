@@ -112,8 +112,8 @@ void printExp( NodeExp *exp, int k ) {
 			return;
 		case castExp:
 			printf("castExp\n");
-			printExp( exp->u.castExp.exp, k+1 );
 			printTipo( exp->u.castExp.tipo, k+1 );
+			printExp( exp->u.castExp.exp, k+1 );
 			return;
 	}
 }

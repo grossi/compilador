@@ -17,136 +17,136 @@ extern struct _NodeTipo tipoFloat;
 extern struct _NodeTipo tipoVoid;
 
 
-void typifyCastExpFromConditional( NodeExp *e ) {
+void typifyCastExpFromConditional( NodeExp **e ) {
 	NodeExp *cast;
 	cast = (NodeExp*) malloc(sizeof(NodeExp));
 	cast->tag = castExp;	
-	if( e->tipo->dimensions != 0 ) {
+	if( (*e)->tipo->dimensions != 0 ) {
 		yyerror("condicional nao pode ser do tipo array");
 	}
-	if( e->tipo->tag != tint ) {
+	if( (*e)->tipo->tag != tint ) {
 		cast->tipo = &tipoInt;
 		cast->u.castExp.tipo = &tipoInt;
-		cast->u.castExp.exp = e;
-		e = cast;
+		cast->u.castExp.exp = *e;
+		*e = cast;
 	}
 }
 
-void typifyCastExpFromReturn( NodeExp *e ) {
+void typifyCastExpFromReturn( NodeExp **e ) {
 	NodeDecFunc *decFunc = decFunc_pilha[decFunc_i-1];
 	NodeExp *cast;
 	cast = (NodeExp*) malloc(sizeof(NodeExp));
 	cast->tag = castExp;
-	if( decFunc->tipo->dimensions == 0 && e->tipo->dimensions == 0 ) {
-		if( e->tipo != decFunc->tipo ) {
+	if( decFunc->tipo->dimensions == 0 && (*e)->tipo->dimensions == 0 ) {
+		if( (*e)->tipo != decFunc->tipo ) {
 			if( decFunc->tipo->tag == tint ) {
 				cast->tipo = &tipoInt;
 				cast->u.castExp.tipo = &tipoInt;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			} else if( decFunc->tipo->tag == tchar ) {
 				cast->tipo = &tipoChar;
 				cast->u.castExp.tipo = &tipoChar;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			} else {
-				cast->tipo = &tipoInt;
-				cast->u.castExp.tipo = &tipoChar;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->tipo = &tipoFloat;
+				cast->u.castExp.tipo = &tipoFloat;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			}
 		}
 	} else {
-		if( e->tipo->dimensions != decFunc->tipo->dimensions )
+		if( (*e)->tipo->dimensions != decFunc->tipo->dimensions )
 			yyerror("cast de nao array para array impossivel");
-		else if( e->tipo->tag != decFunc->tipo->tag )
+		else if( (*e)->tipo->tag != decFunc->tipo->tag )
 			yyerror("cast de arrays de tipos diferentes impossivel");
 	}	
 }
 
-void typifyCastExpFromAssign(NodeVar *v, NodeExp *e) {
+void typifyCastExpFromAssign(NodeVar *v, NodeExp **e) {
 	NodeExp *cast;
 	cast = (NodeExp*) malloc(sizeof(NodeExp));
 	cast->tag = castExp;
-	if( v->decVar->tipo->dimensions == 0 && e->tipo->dimensions == 0 ) {
-		if( e->tipo != v->decVar->tipo ) {
+	if( v->decVar->tipo->dimensions == 0 && (*e)->tipo->dimensions == 0 ) {
+		if( (*e)->tipo != v->decVar->tipo ) {
 			if( v->decVar->tipo->tag == tint ) {
 				cast->tipo = &tipoInt;
 				cast->u.castExp.tipo = &tipoInt;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			} else if( v->decVar->tipo->tag == tchar ) {
 				cast->tipo = &tipoChar;
 				cast->u.castExp.tipo = &tipoChar;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			} else {
 				cast->tipo = &tipoInt;
 				cast->u.castExp.tipo = &tipoChar;
-				cast->u.castExp.exp = e;
-				e = cast;
+				cast->u.castExp.exp = *e;
+				*e = cast;
 			}
 		}
 	} else {
-		if( e->tipo->dimensions != v->decVar->tipo->dimensions )
+		if( (*e)->tipo->dimensions != v->decVar->tipo->dimensions )
 			yyerror("cast de nao array para array impossivel");
-		else if( e->tipo->tag != v->decVar->tipo->tag )
+		else if( (*e)->tipo->tag != v->decVar->tipo->tag )
 			yyerror("cast de arrays de tipos diferentes impossivel");
 	}
 }
 
-void typifyCastExpFromBinary(NodeExp *r, NodeExp *l) {
+void typifyCastExpFromBinary(NodeExp **r, NodeExp **l) {
 	NodeExp *cast;
 	cast = (NodeExp*) malloc(sizeof(NodeExp));
 	cast->tag = castExp;
 
-	if( l->tipo->dimensions != 0 || r->tipo->dimensions != 0 ) {
+	if( (*l)->tipo->dimensions != 0 || (*r)->tipo->dimensions != 0 ) {
 		yyerror("operacao nao suporta tipos array");
 	}
 
-	if( l->tipo != r->tipo ) {
+	if( (*l)->tipo != (*r)->tipo ) {
 		NodeExp *castExp = (NodeExp*) malloc(sizeof(NodeExp));
-		if( l->tipo->tag == tchar ) {
-			if( r->tipo->tag == tint ) {
+		if( (*l)->tipo->tag == tchar ) {
+			if( (*r)->tipo->tag == tint ) {
 				// char OP int
 				cast->tipo = &tipoInt;
 				cast->u.castExp.tipo = &tipoInt;
-				cast->u.castExp.exp = l;
-				l = cast;
+				cast->u.castExp.exp = *l;
+				*l = cast;
 			} else {
 				// char OP float
 				cast->tipo = &tipoFloat;
 				cast->u.castExp.tipo = &tipoFloat;
-				cast->u.castExp.exp = l;
-				l = cast;
+				cast->u.castExp.exp = *l;
+				*l = cast;
 			}
-		} else if( l->tipo->tag == tint ) {
-			if( r->tipo->tag == tchar ) {
+		} else if( (*l)->tipo->tag == tint ) {
+			if( (*r)->tipo->tag == tchar ) {
 				// int OP char
 				cast->tipo = &tipoInt;
 				cast->u.castExp.tipo = &tipoInt;
-				cast->u.castExp.exp = r;
-				r = cast;
+				cast->u.castExp.exp = *r;
+				*r = cast;
 			} else {
 				// int OP float
 				cast->tipo = &tipoFloat;
 				cast->u.castExp.tipo = &tipoFloat;
-				cast->u.castExp.exp = l;
-				l = cast;
+				cast->u.castExp.exp = *l;
+				*l = cast;
 			}
 		} else {
-			if( r->tipo->tag == tchar ) {
+			if( (*r)->tipo->tag == tchar ) {
 				// float OP char
 				cast->tipo = &tipoFloat;
 				cast->u.castExp.tipo = &tipoFloat;
-				cast->u.castExp.exp = r;
-				r = cast;
+				cast->u.castExp.exp = *r;
+				*r = cast;
 			} else {
 				// float OP int
 				cast->tipo = &tipoFloat;
 				cast->u.castExp.tipo = &tipoFloat;
-				cast->u.castExp.exp = r;
-				r = cast;
+				cast->u.castExp.exp = *r;
+				*r = cast;
 			}
 		}
 	}
@@ -188,25 +188,25 @@ void typifyExp( NodeExp *exp ) {
 		case multiExp:
 			typifyExp( l );
 			typifyExp( r );
-			typifyCastExpFromBinary( r, l );
+			typifyCastExpFromBinary( &r, &l );
 			exp->tipo = r->tipo;
 			return;
 		case addExp:
 			typifyExp( l );
 			typifyExp( r );
-			typifyCastExpFromBinary( r, l );
+			typifyCastExpFromBinary( &r, &l );
 			exp->tipo = r->tipo;
 			return;
 		case minusExp:
 			typifyExp( l );
 			typifyExp( r );
-			typifyCastExpFromBinary( r, l );
+			typifyCastExpFromBinary( &r, &l );
 			exp->tipo = r->tipo;
 			return;
 		case divExp:
 			typifyExp( l );
 			typifyExp( r );
-			typifyCastExpFromBinary( r, l );
+			typifyCastExpFromBinary( &r, &l );
 			exp->tipo = r->tipo;
 			return;
 		case greaterExp:
@@ -321,13 +321,13 @@ void typifyCommand( NodeComando *command ) {
 		case cif:
 			typifyExp( command->u.cif.cond );
 			typifyCommand( command->u.cif.command );
-			typifyCastExpFromConditional( command->u.cif.cond );
+			typifyCastExpFromConditional( &(command->u.cif.cond) );
 			return;
 		case cifelse:
 			typifyExp( command->u.cifelse.cond );
 			typifyCommand( command->u.cifelse.ifCommand );
 			typifyCommand( command->u.cifelse.elseCommand );
-			typifyCastExpFromConditional( command->u.cifelse.cond );
+			typifyCastExpFromConditional( &(command->u.cifelse.cond) );
 			return;
 		case cwhile:
 			typifyExp( command->u.cwhile.cond );
@@ -336,11 +336,11 @@ void typifyCommand( NodeComando *command ) {
 		case cassign:
 			typifyVar( command->u.cassign.var );
 			typifyExp( command->u.cassign.exp );
-			typifyCastExpFromAssign( command->u.cassign.var, command->u.cassign.exp );
+			typifyCastExpFromAssign( command->u.cassign.var, &(command->u.cassign.exp) );
 			return;
 		case creturn:
 			typifyExp( command->u.returnExp );
-			typifyCastExpFromReturn( command->u.returnExp );
+			typifyCastExpFromReturn( &(command->u.returnExp) );
 			return;
 		case cchamada:
 			typifyChamada( command->u.chamada );

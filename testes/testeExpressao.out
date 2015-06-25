@@ -1,0 +1,172 @@
+program
+ declista
+  Declaracao Var ID : ds 
+   tipo: int
+   Declaracao Var ID : t 
+    tipo: int
+    Declaracao Var ID : e 
+     tipo: int
+     Declaracao Var ID : v 
+      tipo: int
+  declista
+   Declaracao Var ID : h 
+    tipo: char
+   declista
+    Declaracao Func id: ba2
+     tipo: int
+     Bloco Command
+      Command chamada
+       chamada: f
+        listExp
+         constantExp
+          constant: int 3
+         listExp
+          constantExp
+           constant: int 1
+      Bloco Command
+       Command return
+        constantExp
+         constant: int 0
+    declista
+     Declaracao Func id: f
+      tipo: int
+      param: a
+       tipo: int
+       param: b
+        tipo: int
+      Bloco Command
+       Command assign
+        var: v
+        constantExp
+         constant: int 3
+       Bloco Command
+        Command assign
+         var: h
+         castExp
+          constantExp
+           constant: int 1
+          tipo: char
+        Bloco Command
+         Command assign
+          var: h
+          castExp
+           chamadaExp
+            chamada: f
+             listExp
+              constantExp
+               constant: int 3
+              listExp
+               constantExp
+                constant: int 2
+           tipo: char
+         Bloco Command
+          Command if
+           castExp
+            varExp
+             var: h
+            tipo: int
+           Command bloco
+            Bloco Command
+             Command return
+              notExp
+               minusExp
+                addExp
+                 varExp
+                  var: v
+                 divExp
+                  multiExp
+                   constantExp
+                    constant: int 2
+                   varExp
+                    var: a
+                  constantExp
+                   constant: int 4
+                varExp
+                 var: b
+     declista
+      Declaracao Func id: f1
+       tipo: int
+       param: a
+        tipo: int
+        param: b
+         tipo: int
+       Bloco Command
+        Command assign
+         var: v
+         constantExp
+          constant: int 3
+        Bloco Command
+         Command assign
+          var: h
+          castExp
+           constantExp
+            constant: int 1
+           tipo: char
+         Bloco Command
+          Command assign
+           var: h
+           castExp
+            chamadaExp
+             chamada: f1
+              listExp
+               constantExp
+                constant: int 3
+               listExp
+                constantExp
+                 constant: int 2
+            tipo: char
+          Bloco Command
+           Command if
+            castExp
+             varExp
+              var: h
+             tipo: int
+            Command bloco
+             Bloco Command
+              Command return
+               notExp
+                minusExp
+                 addExp
+                  varExp
+                   var: v
+                  divExp
+                   multiExp
+                    constantExp
+                     constant: int 2
+                    varExp
+                     var: a
+                   constantExp
+                    constant: int 4
+                 varExp
+                  var: b
+      declista
+       Declaracao Func id: ba
+        tipo: int
+        Bloco Command
+         Command return
+          constantExp
+           constant: int 0
+         Bloco Command
+          Command return
+           constantExp
+            constant: int 1
+       declista
+        Declaracao Func id: banana
+         tipo: void
+         param: c
+          tipo: int
+         Bloco Command
+          Command assign
+           var: c
+           castExp
+            constantExp
+             constant: char 3
+            tipo: int
+          Bloco Dec
+           Declaracao Var ID : e 
+            tipo: int
+           Bloco Command
+            Command assign
+             var: e
+             varExp
+              var: c
