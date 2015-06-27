@@ -32,89 +32,106 @@ void printExp( NodeExp *exp, int k ) {
 	{
 		case multiExp:
 			printf("multiExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case addExp:
 			printf("addExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case minusExp:
 			printf("minusExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case divExp:
 			printf("divExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case greaterExp:
 			printf("greaterExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case lessExp:
 			printf("lessExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case GEExp:
 			printf("GEExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case LEExp:
 			printf("LEExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case notExp:
 			printf("notExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.unary_exp, k+1 );
-			return;
+			break;
 		case andExp:
 			printf("andExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case orExp:
 			printf("orExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case constantExp:
 			printf("constantExp\n");
+			printTipo( exp->tipo , k+1 );
 			printConstant( exp->u.k, k+1 );
-			return;
+			break;
 		case varExp:
 			printf("varExp\n");
+			printTipo( exp->tipo , k+1 );
 			printVar( exp->u.var, k+1 );
-			return;
+			break;
 		case chamadaExp:
 			printf("chamadaExp\n");
+			printTipo( exp->tipo , k+1 );
 			printChamada( exp->u.chamada, k+1 );
-			return;
+			break;
 		case unMinusExp:
 			printf("unMinusExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.unary_exp, k+1 );
-			return;
+			break;
 		case eqExp:
 			printf("eqExp\n");
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.binary_exp.l, k+1 );
 			printExp( exp->u.binary_exp.r, k+1 );
-			return;
+			break;
 		case newExp:
 			printf("newExp\n");
+			printTipo( exp->tipo , k+1 );
 			printTipo( exp->u.newExp.tipo, k+1 );
 			printIndexList( exp->u.newExp.index, k+1 );
-			return;
+			break;
 		case castExp:
 			printf("castExp\n");
-			printTipo( exp->u.castExp.tipo, k+1 );
+			printTipo( exp->tipo , k+1 );
 			printExp( exp->u.castExp.exp, k+1 );
-			return;
+			break;
 	}
 }
 

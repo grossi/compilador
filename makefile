@@ -18,3 +18,13 @@ testComentario:
 	diff testes/testeComentario.expected testes/testeComentario.out 
 
 tests: testExpressao testComentario
+
+compileTestExpressao:
+
+
+compileTest: compileTestExpressao
+	monga.exe < testes/testeExpressao.monga > testes/testeExpressao.s
+	gcc testes/testeExpressaoMain.c -S
+	cat testeExpressaoMain.s >> testes/testeExpressao.s
+	rm testeExpressaoMain.s
+	gcc testes/testeExpressao.s -o testesExpressao

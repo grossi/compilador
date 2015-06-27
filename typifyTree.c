@@ -286,11 +286,17 @@ void typifyListExp( NodeListaExp *listaExp ) {
 
 void typifyChamada( NodeChamada *chamada ) {
 	int i;
+	chamada->decFunc = NULL;
 	for(i = decFunc_i-1; i >= 0; i-- ) {
 		if( strcmp( chamada->id, decFunc_pilha[i]->id ) == 0 ) {
 			chamada->decFunc = decFunc_pilha[i];
 			break;
 		}
+	}
+	if(chamada->decFunc == NULL) 
+	{
+		printf("funcao %s\n", chamada->id);
+		yyerror("funcao nao declarada");
 	}
 	if( chamada->parans != NULL )
 		typifyListExp( chamada->parans );

@@ -28,6 +28,7 @@ int main()
 	yyparse();
 	startingNode.program = semTree;
 	typifyProgram( startingNode.program );
-	printProgram( startingNode.program, 0 );
+	//printProgram( startingNode.program, 0 );
+	compileProgram( startingNode.program );
 	return 0;
 }

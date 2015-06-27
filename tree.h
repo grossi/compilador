@@ -147,6 +147,7 @@ typedef struct _NodeDecVar {
 	struct _NodeTipo *tipo;
 	struct _NodeDecVar *next;
 	char *id;
+	int offset;
 } NodeDecVar;
 
 typedef struct _NodeListaNomes {
@@ -193,6 +194,7 @@ typedef struct _NodeDecFunc {
 	char* id;
 	struct _NodeParam *params;
 	struct _NodeBloco *bloco;
+	char *asmId;
 } NodeDecFunc;
 
 typedef struct _NodeProgram {
